@@ -1,5 +1,5 @@
 <h1 align='center'>TomatoSalad</h1>
-My attempt at making a Pomodoro Timer.
+My attempt at making a Pomodoro Timer. Will first try making a Pure-JS one. Make it prettier. Before going web-apps, etc.
 
 ### Repos of Importance: 
 + https://github.com/roldanjr/pomatez (Typescript)
