@@ -1,6 +1,11 @@
 <h1 align='center'>TomatoSalad</h1>
 My attempt at making a Pomodoro Timer. Will first try making a Pure-JS one. Make it prettier. Before going web-apps, etc.
 
+<p align='center'>
+![Screenshot of index.html](Screenshot.png)
+</p>
+
+
 ### Repos of Importance: 
 + https://github.com/roldanjr/pomatez (Typescript)
 + https://github.com/karimdaghari/pomotroid (Vue)
