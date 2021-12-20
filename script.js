@@ -5,15 +5,17 @@ var hours;
 
 function StartTimer() {
 	timer = document.getElementById('inputTime').value;
-	console.log(timer);
-	timerTime = timer.split(":");
-	setTime = [(timerTime[0]*1), (timerTime[1]*1), (timerTime[2]*1)];
-	console.log(setTime);
+	timer = timer.split(":");
+	hours = timer[0];
+	minutes = timer[1];
+	seconds = timer[2];
 
-	hours = setTime[0];
-	minutes = setTime[1];
-	seconds = setTime[2];
-	intervalID = setInterval(TheTimer, 1000);
+	if (seconds < 60 & minutes < 60) {
+		intervalID = setInterval(TheTimer, 1000);		
+	} else {
+		alert('Make sure your minute and second values are below 60! hh:59:59')
+	}
+
 }
 
 
