@@ -62,3 +62,7 @@ button {
 	color: #ccc;
 	font-size: 16px;
 }
+
+*[disabled] {
+	background: #222 !important;
+}

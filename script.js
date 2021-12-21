@@ -1,7 +1,8 @@
-var setTime;
+var timer;
 var seconds;
 var minutes;
 var hours;
+var displayTime;
 
 function StartTimer() {
 	timer = document.getElementById('inputTime').value;
@@ -40,9 +41,18 @@ function TheTimer() {
 			}
 		}
 	}
-
 	console.log(hours, minutes, seconds);
-	document.getElementById('timerPlace').innerHTML = hours + ':' + minutes + ':' + seconds;
+
+	displayTime = hours + ':';
+	if ((minutes+'').length == 1) {
+		displayTime = displayTime + '0' + minutes + ':';
+	} else {displayTime += minutes + ':'}
+
+	if ((seconds+'').length == 1) {
+		displayTime = displayTime + '0' + seconds;
+	} else {displayTime += seconds}
+
+	document.getElementById('timerPlace').innerHTML = displayTime;
 }
 
 
