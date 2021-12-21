@@ -10,6 +10,7 @@ My attempt at making a Pomodoro Timer. Will first try making a Pure-JS one. Make
 
 + **2021-12-20:** Backtracked on the "Turn-everything-into-seconds" decision. Now input is properly divided into hours, minutes and seconds. Using setInterval, a function is called every 1 second to update the values. First, subtracting seconds one by one until these reach 0. At this point, minutes is subtracted by one, and *secs* are set back to 60. This will go on until minutes also reach zero. If an 'hour' value was set, it will be subtracted by one, minutes will be set to 60 again, and the timer will continue in loop, until every value reaches 0. An alert() will be called then. The timer's values are displayed with both console.log and with innerHTML. 
 
++ **2021-12-21:** Input and 'start' button will both receive the *disabled* attribute once the latter is pressed. The 'reset' button will enable them again with *.attributes.removeNamedItem*. At the moment, disabled input/buttons don't have any distinction to their enabled counterpart.
 
 ### Fix these:
 + ~~*minutes* and *seconds* can be set to above 60.~~ Fixed.

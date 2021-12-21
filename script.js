@@ -15,7 +15,8 @@ function StartTimer() {
 	} else {
 		alert('Make sure your minute and second values are below 60! hh:59:59')
 	}
-
+	document.getElementById('inputTime').disabled = true;
+	document.getElementById('start').disabled = true;
 }
 
 
@@ -50,4 +51,6 @@ function ResetTimer() {
 	hours = 0; minutes = 0; seconds = 0;
 	console.log(hours, minutes, seconds);
 	document.getElementById('timerPlace').innerHTML = hours + ':' + minutes + ':' + seconds;
+	document.getElementById('inputTime').attributes.removeNamedItem('disabled');
+	document.getElementById('start').attributes.removeNamedItem('disabled');
 }
