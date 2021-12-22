@@ -1,10 +1,6 @@
 <h1 align='center'>TomatoSalad</h1>
 My attempt at making a Pomodoro Timer. Will first try making a Pure-JS one. Make it prettier. Before going web-apps, etc.
 
-<p align='center'>
-	<img src='Screenshot.png' alt=''>
-</p>
-
 ## Progress:
 + **2021-12-19:** Still fumbling around. The input is set to take a value in the format hours:minutes:seconds and then get an array of these as seconds. 
 
