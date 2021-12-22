@@ -23,28 +23,32 @@ main {
 
 
 main div {
-	/*border-radius: 20px;*/
-	/*border: 2px solid #555;*/
-	/*width: 40%;*/
 	height: 100px;
-	height: 100px;
-	/*width: 40%;*/
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
+#card {
+	height: 230px;
+	display: flex;
+}
 
-
-#inputTime {
+.beepBoop {
 	border: none;
 	transform: scale(1.5);
-	border-radius: 5px;
+	border: 5px;
+	border-radius: 3px;
 	background: #555;
 	color: #CCC;
 	text-align: center;
 }
+
+.beepBoop + .beepBoop {
+	margin-top: 25px;
+}
+
 
 #Buttons {
 	width: 100%;

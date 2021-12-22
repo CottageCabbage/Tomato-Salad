@@ -14,8 +14,14 @@
 		<div id="timerdiv">
 			<h2 id="timerPlace">hours:minutes:seconds</h2>
 		</div>
-		<div>
-			<input type="text" name="timer" id="inputTime" placeholder="hh:mm:ss">
+		<div id="card">
+			<div id="inputContainer">
+				<input type="text" name="timer" id="workTimer" class="beepBoop" placeholder="hh:mm:ss">
+
+				<input type="text" name="restTimer" id="restTimer" class="beepBoop" placeholder="hh:mm:ss">
+
+				<input type="text" name="loopTimes" id="loopTimes" class="beepBoop" placeholder="n">
+			</div>
 
 			<div id="Buttons">
 				<button id="start" onclick="StartTimer()">Start</button>

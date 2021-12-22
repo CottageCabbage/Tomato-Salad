@@ -5,7 +5,7 @@ var hours;
 var displayTime;
 
 function StartTimer() {
-	timer = document.getElementById('inputTime').value;
+	timer = document.getElementById('workTimer').value;
 	timer = timer.split(":");
 	hours = timer[0];
 	minutes = timer[1];
@@ -16,7 +16,9 @@ function StartTimer() {
 	} else {
 		alert('Make sure your minute and second values are below 60! hh:59:59')
 	}
-	document.getElementById('inputTime').disabled = true;
+	document.getElementById('workTimer').disabled = true;
+	document.getElementById('restTimer').disabled = true;
+	document.getElementById('loopTimes').disabled = true;
 	document.getElementById('start').disabled = true;
 }
 
@@ -38,6 +40,10 @@ function TheTimer() {
 			else if (hours == 0) {
 				alert('Timer out');
 				clearInterval(intervalID);
+				let startRest = confirm('Start rest timer?');
+				if (startRest == true) {
+					startRestTimer()
+				}
 			}
 		}
 	}
@@ -61,6 +67,21 @@ function ResetTimer() {
 	hours = 0; minutes = 0; seconds = 0;
 	console.log(hours, minutes, seconds);
 	document.getElementById('timerPlace').innerHTML = hours + ':' + minutes + ':' + seconds;
-	document.getElementById('inputTime').attributes.removeNamedItem('disabled');
+	document.getElementById('workTimer').attributes.removeNamedItem('disabled');
 	document.getElementById('start').attributes.removeNamedItem('disabled');
 }
+
+
+
+function startRestTimer() {
+	restTimerValue = document.getElementById('restTimer').value;
+	restTimerValue = restTimerValue.split(":");
+	console.log(restTimerValue)
+
+}
+
+// https://stackoverflow.com/questions/457826/pass-parameters-in-setinterval-function
+// https://stackoverflow.com/questions/21277900/how-can-i-pause-setinterval-functions
+// https://stackoverflow.com/questions/7279567/how-do-i-stop-a-window-setinterval-in-javascript/7282347#7282347
+// https://stackoverflow.com/questions/7279567/how-do-i-stop-a-window-setinterval-in-javascript
+// https://stackoverflow.com/questions/1191865/code-for-a-simple-javascript-countdown-timer
