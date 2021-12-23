@@ -1,10 +1,19 @@
+var timerStatus;
+
 var timer;
 var seconds;
 var minutes;
 var hours;
 var displayTime;
+var restTimer;
+
+
+
+
 
 function StartTimer() {
+	alert('HEY')
+	timerStatus = 'working';
 	timer = document.getElementById('workTimer').value;
 	timer = timer.split(":");
 	hours = timer[0];
@@ -40,15 +49,29 @@ function TheTimer() {
 			else if (hours == 0) {
 				alert('Timer out');
 				clearInterval(intervalID);
-				let startRest = confirm('Start rest timer?');
-				if (startRest == true) {
-					startRestTimer()
+
+				if (timerStatus == 'working') {
+					let startRest = confirm('Start rest timer?');
+					if (startRest == true) {
+						startRestTimer();
+					}
+				} 
+				else if (timerStatus == 'resting') {
+					let startWorking = confirm('Breaktime is over, start work?');
+					if (startWorking == true) {
+						StartTimer();
+					}
 				}
 			}
 		}
 	}
 	console.log(hours, minutes, seconds);
 
+	updateTimer();
+
+}
+
+function updateTimer() {
 	displayTime = hours + ':';
 	if ((minutes+'').length == 1) {
 		displayTime = displayTime + '0' + minutes + ':';
@@ -62,7 +85,9 @@ function TheTimer() {
 }
 
 
+
 function ResetTimer() {
+
 	clearInterval(intervalID);
 	hours = 0; minutes = 0; seconds = 0;
 	console.log(hours, minutes, seconds);
@@ -74,10 +99,19 @@ function ResetTimer() {
 
 
 function startRestTimer() {
+	timerStatus = 'resting';
 	restTimerValue = document.getElementById('restTimer').value;
 	restTimerValue = restTimerValue.split(":");
-	console.log(restTimerValue)
+	
+	hours = restTimerValue[0];
+	minutes = restTimerValue[1];
+	seconds = restTimerValue[2];
 
+	if (seconds < 60 & minutes < 60) {
+		intervalID = setInterval(TheTimer, 1000);		
+	} else {
+		alert('Make sure your minute and second values are below 60! hh:59:59')
+	}
 }
 
 // https://stackoverflow.com/questions/457826/pass-parameters-in-setinterval-function

@@ -1,35 +1,5 @@
 <h1 align='center'>TomatoSalad</h1>
-My attempt at making a Pomodoro Timer. Will first try making a Pure-JS one. Make it prettier. Before going web-apps, etc.
-
-## Progress:
-+ **2021-12-19:** Still fumbling around. The input is set to take a value in the format hours:minutes:seconds and then get an array of these as seconds. 
-
-+ **2021-12-20:** Backtracked on the "Turn-everything-into-seconds" decision. Now input is properly divided into hours, minutes and seconds. Using setInterval, a function is called every 1 second to update the values. First, subtracting seconds one by one until these reach 0. At this point, minutes is subtracted by one, and *secs* are set back to 60. This will go on until minutes also reach zero. If an 'hour' value was set, it will be subtracted by one, minutes will be set to 60 again, and the timer will continue in loop, until every value reaches 0. An alert() will be called then. The timer's values are displayed with both console.log and with innerHTML. 
-
-+ **2021-12-21:** Input and 'start' button will both receive the *disabled* attribute once the latter is pressed. The 'reset' button will enable them again with *.attributes.removeNamedItem*. ~~At the moment, disabled input/buttons don't have any distinction to their enabled counterpart~~ nevermind, that wasn't to difficult. Just fix the crappy CSS later on.
-
-+ **2021-12-22:** Added restTimer and loopTimes inputs. Currently working on how to reuse *theTimer()* function without copy-and-pasting it with different variables. While browsing, I found the following advice for countdown timers, which advices against what I'm doing right now. I kind of want to complete this one as it is before going for another solution, but will likely remake TomatoSalad based on it once I'm finished.
-
-> You shouldn't measure time in interval function. Instead just save time when timer was started and measure difference when timer was stopped/paused. Use setInterval only to update displayed value. So there is no need to pause timer and you will get best possible accuracy in this way.
-
-
-### Fix these:
-+ ~~*minutes* and *seconds* can be set to above 60.~~ Fixed.
-+ ~~in InnerHTML, the values should preferably be displayed in the format 0n if they are below 10.~~ Fixed for minutes and seconds, unsure whether I should do the same for hours.
-+ Give warning if input in the wrong format, don't start timer. 
-
-### Do these:
-+ Rest timer
-+ Loop times
-
-### Potentially Useful Links:
-
-// https://stackoverflow.com/questions/457826/pass-parameters-in-setinterval-function
-// https://stackoverflow.com/questions/21277900/how-can-i-pause-setinterval-functions
-// https://stackoverflow.com/questions/7279567/how-do-i-stop-a-window-setinterval-in-javascript/7282347#7282347
-// https://stackoverflow.com/questions/7279567/how-do-i-stop-a-window-setinterval-in-javascript
-// https://stackoverflow.com/questions/1191865/code-for-a-simple-javascript-countdown-timer
-
+My attempt at making a Pomodoro Timer. Will first try making a Pure-JS one. Make it prettier. Before going web-apps, etc. Check v1_Web_PureJS for project
 
 ### Repos of Importance: 
 + https://github.com/roldanjr/pomatez (Typescript)
