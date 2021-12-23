@@ -18,9 +18,9 @@
 + Give warning if input in the wrong format, don't start timer. 
 
 ### Do these:
-+ Rest timer
++ ~~Rest timer~~ Done
 + Loop times
-
++ Add sound.
 
 ### Potentially Useful Links:
 
