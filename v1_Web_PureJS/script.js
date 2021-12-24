@@ -1,4 +1,7 @@
 var timerStatus;
+var loops;
+var loopsRan;
+loopsRan = 0;
 
 var timer;
 var seconds;
@@ -9,22 +12,24 @@ var restTimer;
 
 
 
-
-
 function StartTimer() {
-	alert('HEY')
+	// Configure Timer
+	loops = document.getElementById('loopTimes').value;
 	timerStatus = 'working';
+	console.log(timerStatus)
+	// Get paramethers
 	timer = document.getElementById('workTimer').value;
 	timer = timer.split(":");
 	hours = timer[0];
 	minutes = timer[1];
 	seconds = timer[2];
-
+	// Check if value is valid, then start timer through Interval
 	if (seconds < 60 & minutes < 60) {
-		intervalID = setInterval(TheTimer, 1000);		
+		intervalID = setInterval(TheTimer, 1000);
 	} else {
 		alert('Make sure your minute and second values are below 60! hh:59:59')
 	}
+	// Disable all inputs & start button
 	document.getElementById('workTimer').disabled = true;
 	document.getElementById('restTimer').disabled = true;
 	document.getElementById('loopTimes').disabled = true;
@@ -33,29 +38,44 @@ function StartTimer() {
 
 
 function TheTimer() {
+	// If seconds greater than zero, subtract by 1
 	if (seconds > 0) {
 		seconds--;
 	}
+	// If seconds equal to zero and minutes greater than zero, subtract minutes by 1, make seconds equal 60
 	else if (seconds == 0) {
 		if (minutes > 0) {
 			minutes--;
 			seconds+=60;
 		}
+		// If minutes equal to zero and hours greater than zero, subtract hours by 1, make minutes equal 60
 		else if (minutes == 0) {
 			if (hours > 0) {
 				hours--;
 				minutes+=60;
 			}
+			// Otherwise, end timer.
 			else if (hours == 0) {
 				alert('Timer out');
 				clearInterval(intervalID);
-
+				// If in work mode, 
 				if (timerStatus == 'working') {
-					let startRest = confirm('Start rest timer?');
-					if (startRest == true) {
-						startRestTimer();
+					loopsRan += 1;
+					updateLoopCount()
+					// check if loops done equals to amount wanted. If so, alert()
+					if (loopsRan == loops) {
+						alert("You have finished your loops.");
+					}
+					// Else, if loopsRan smaller than loops, prompt for restTimer
+					else if (loopsRan < loops) {
+						
+						let startRest = confirm('Start rest timer?');
+						if (startRest == true) {
+							startRestTimer();
+						}
 					}
 				} 
+				// If in resting mode,
 				else if (timerStatus == 'resting') {
 					let startWorking = confirm('Breaktime is over, start work?');
 					if (startWorking == true) {
@@ -85,12 +105,16 @@ function updateTimer() {
 }
 
 
+function updateLoopCount() {
+	document.getElementById('displayLoopsHere').innerHTML = 'Loops Completed:' + loopsRan + '/' + loops;
+}
 
 function ResetTimer() {
 
 	clearInterval(intervalID);
 	hours = 0; minutes = 0; seconds = 0;
 	console.log(hours, minutes, seconds);
+
 	document.getElementById('timerPlace').innerHTML = hours + ':' + minutes + ':' + seconds;
 	document.getElementById('workTimer').attributes.removeNamedItem('disabled');
 	document.getElementById('start').attributes.removeNamedItem('disabled');
@@ -100,6 +124,7 @@ function ResetTimer() {
 
 function startRestTimer() {
 	timerStatus = 'resting';
+	console.log(timerStatus)
 	restTimerValue = document.getElementById('restTimer').value;
 	restTimerValue = restTimerValue.split(":");
 	
