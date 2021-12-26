@@ -144,3 +144,14 @@ function startRestTimer() {
 // https://stackoverflow.com/questions/7279567/how-do-i-stop-a-window-setinterval-in-javascript/7282347#7282347
 // https://stackoverflow.com/questions/7279567/how-do-i-stop-a-window-setinterval-in-javascript
 // https://stackoverflow.com/questions/1191865/code-for-a-simple-javascript-countdown-timer
+
+
+function closeSettings() {
+	var displayStatus = document.getElementById('settings');
+	displayStatus.style.display = 'none';
+}
+
+function openSettings() {
+	var displayStatus = document.getElementById('settings');
+	displayStatus.style.display = 'flex';
+}

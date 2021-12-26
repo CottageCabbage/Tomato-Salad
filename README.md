@@ -7,4 +7,5 @@ My attempt at making a Pomodoro Timer. Will first try making a Pure-JS one. Make
 + https://github.com/gnome-pomodoro/gnome-pomodoro (Vala?? Never heard about it. Saving just in case)
 + https://github.com/RoderickQiu/wnr (Electron & Vue?)
 + https://github.com/KeziahMoselle/tempus/releases/tag/v1.7.0 (Electron & React)
++ https://github.com/schmich/marinara (Vue, Ruby)
 + https://github.com/adrcotfas/Goodtime (Kotlin, ANDROID)

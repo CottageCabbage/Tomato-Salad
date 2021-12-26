@@ -13,6 +13,7 @@
 
 + **2021-12-24:** *ifs* were used in place of *for's*, but the loop-part seems to be working fine. The amout of loops ran is displayed at the bottom of the card, together with the wanted amount of loops. ~~As of now, the former is updated as soon as a workTimer starts, as such, '2/3' means *1 loop completed* and *1 on-going*. That's not optimal.~~ nevermind, fixed that. The loopCount displays properly now. After the final work pomodoro, no timer for rest is provided. It's meant to be this way, but I'll add to "to these" a way (checkbox?) to toogle otherwise.
 
++ **2021-12-~~25~~26:** Setting div with 'Night Mode' and 'Enable Long Breaks'.
 
 ### Fix these:
 + ~~*minutes* and *seconds* can be set to above 60.~~ Fixed.
@@ -24,7 +25,7 @@
 + ~~Loop times~~ Done
 + ~~Display current loop out of times~~ Done
 + Add sound.
-+ Toogle Final Rest
++ Toogle Final Rest. The length should be customizable
 
 ### Potentially Useful Links:
 

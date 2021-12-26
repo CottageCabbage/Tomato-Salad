@@ -10,17 +10,20 @@
 	<header>
 		<h1>Pomodoro Timer</h1>
 	</header>
+
 	<main>
+		<i onclick="openSettings()">settings</i>	
 		<div id="timerdiv">
 			<h2 id="timerPlace">hours:minutes:seconds</h2>
 		</div>
+
 		<div id="card">
 			<div id="inputContainer">
-				<input type="text" name="timer" id="workTimer" class="beepBoop" placeholder="hh:mm:ss">
+				<input type="text" name="timer" id="workTimer" class="beepBoop" placeholder="How long will you be working?">
 
-				<input type="text" name="restTimer" id="restTimer" class="beepBoop" placeholder="hh:mm:ss">
+				<input type="text" name="restTimer" id="restTimer" class="beepBoop" placeholder="How long will be your breaks?">
 
-				<input type="text" name="loopTimes" id="loopTimes" class="beepBoop" placeholder="n">
+				<input type="text" name="loopTimes" id="loopTimes" class="beepBoop" placeholder="and how many times?">
 			</div>
 
 			<div id="Buttons">
@@ -29,8 +32,25 @@
 				<button id="reset" onclick="ResetTimer()">Reset</button>
 			</div>
 		</div>
+
 		<p id="displayLoopsHere">Loops Completed: 0/0</p>
+		<div id="settings">
+			<i onclick="closeSettings()">X</i>
+
+
+			<label for="">
+				<input type="checkbox" name="">Night Mode
+			</label>
+			<label for="">
+				<input type="checkbox" name="">Enable Long Breaks?
+			</label>
+
+
+		</div>		
+
+
 	</main>
+
 
 </body>
 </html>
