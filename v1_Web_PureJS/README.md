@@ -15,17 +15,21 @@
 
 + **2021-12-~~25~~26:** Setting div with 'Night Mode' and 'Enable Long Breaks'.
 
++ **2021-12-27:** Checkbox inputs work now, and call their functions onChange(). They are also called right away too, just to be sure what's checked and what's not. Ticking LongBreaks checkbox changes it's display property. It doesn't work yet tho. I'm also not sure if changing it's display to none would make it not affect the rest of the javascript? Will have to see, use if(display whatever) if so. I personally don't think changing themes is necessary for this, but I also kinda want to test how changing css works.
+
 ### Fix these:
 + ~~*minutes* and *seconds* can be set to above 60.~~ Fixed.
 + ~~in InnerHTML, the values should preferably be displayed in the format 0n if they are below 10.~~ Fixed for minutes and seconds, unsure whether I should do the same for hours.
 + Give warning if input in the wrong format, don't start timer. 
 
 ### Do these:
-+ ~~Rest timer~~ Done
-+ ~~Loop times~~ Done
-+ ~~Display current loop out of times~~ Done
 + Add sound.
-+ Toogle Final Rest. The length should be customizable
++ ~~Toogle Final Rest. The length should be customizable~~ Input for how many workLoops between longBreaks.
++ night mode and day mode
+
+
+
++ Just thought of this but it would be much cooler if instead of layering over #card, the settings div pushed it to the left and went to the right. Rectangle. Maybe use keyframes to animate?
 
 ### Potentially Useful Links:
 

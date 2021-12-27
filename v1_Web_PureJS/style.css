@@ -90,14 +90,20 @@ button {
 
 
 
+
+#longRestTimer {
+	display: none;
+}
+
+
 #settings {
 	z-index: 20;
 	position: absolute;
 	background: #222;
-	/*display: none;*/
-	display: flex;
-	width: 120%;
-	height: 120%;
+	display: none;
+	/*display: flex;*/
+	width: 100%;
+	height: 100%;
 	margin: auto;
 	justify-content: center;
 	align-items: center;

@@ -155,3 +155,31 @@ function openSettings() {
 	var displayStatus = document.getElementById('settings');
 	displayStatus.style.display = 'flex';
 }
+
+
+/* LONG BREAKS */
+longBreaksEnabled = document.getElementById('enableLongBreaks');
+// Called with onChange()
+function longBreaksCheckbox() {
+	if (longBreaksEnabled.checked) {
+		console.log('Long breaks are enabled');
+		document.getElementById('longRestTimer').style.display = 'block';
+	} else {
+		console.log('Long breaks are disabled')
+		document.getElementById('longRestTimer').style.display = 'none';
+	}	
+}
+// So that state updates with page reload
+longBreaksCheckbox()
+
+
+
+
+/* NIGHT MODE */
+nightModeEnabled = document.getElementById('enableNightMode')
+
+
+
+function nightModeCheckbox() {
+	
+}

@@ -23,6 +23,8 @@
 
 				<input type="text" name="restTimer" id="restTimer" class="beepBoop" placeholder="How long will be your breaks?">
 
+				<input type="text" name="longRestTimer" id="longRestTimer" class="beepBoop" placeholder="What about the long breaks?">
+
 				<input type="text" name="loopTimes" id="loopTimes" class="beepBoop" placeholder="and how many times?">
 			</div>
 
@@ -39,10 +41,10 @@
 
 
 			<label for="">
-				<input type="checkbox" name="">Night Mode
+				<input type="checkbox" name="" id="enableNightMode" onchange="nightModeCheckbox()" checked>Night Mode
 			</label>
 			<label for="">
-				<input type="checkbox" name="">Enable Long Breaks?
+				<input type="checkbox" name="" id="enableLongBreaks" onchange="longBreaksCheckbox()">Enable Long Breaks?
 			</label>
 
 
