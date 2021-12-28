@@ -1,1 +1,25 @@
-lightMode.css
+body {
+	background: #F5F3F7;
+	color: #333;
+}
+
+
+/*#E5B3BB 	*/
+
+.beepBoop {
+	background: #Beb4c5;
+	color: #333;
+}
+
+button {
+	background: #555;
+	color: #ccc;
+}
+
+*[disabled] {
+	background: #222 !important;
+}
+
+#settings {
+	background: #F5F3F7;
+}

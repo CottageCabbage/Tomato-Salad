@@ -178,8 +178,17 @@ longBreaksCheckbox()
 /* NIGHT MODE */
 nightModeEnabled = document.getElementById('enableNightMode')
 
-
-
 function nightModeCheckbox() {
-	
+	if (enableNightMode.checked) {
+		changeStyle('themes/night.css')
+	} else {
+		changeStyle('themes/day.css')
+	}
 }
+
+function changeStyle(styleSheet) {
+	styleSheets = document.getElementsByTagName('link');
+	styleSheets[1].href = styleSheet;
+}
+	
+nightModeCheckbox()

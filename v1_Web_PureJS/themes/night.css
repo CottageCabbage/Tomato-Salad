@@ -1,0 +1,22 @@
+body {
+	background: #333;
+	color: #eee;
+}
+
+.beepBoop {
+	background: #555;
+	color: #CCC;
+}
+
+button {
+	background: #555;
+	color: #ccc;
+}
+
+*[disabled] {
+	background: #222 !important;
+}
+
+#settings {
+	background: #222;
+}
