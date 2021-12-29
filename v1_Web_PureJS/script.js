@@ -1,14 +1,4 @@
-var timerStatus;
-var loops;
-var loopsRan;
-loopsRan = 0;
 
-var timer;
-var seconds;
-var minutes;
-var hours;
-var displayTime;
-var restTimer;
 
 
 
@@ -37,77 +27,9 @@ function StartTimer() {
 }
 
 
-function TheTimer() {
-	// If seconds greater than zero, subtract by 1
-	if (seconds > 0) {
-		seconds--;
-	}
-	// If seconds equal to zero and minutes greater than zero, subtract minutes by 1, make seconds equal 60
-	else if (seconds == 0) {
-		if (minutes > 0) {
-			minutes--;
-			seconds+=60;
-		}
-		// If minutes equal to zero and hours greater than zero, subtract hours by 1, make minutes equal 60
-		else if (minutes == 0) {
-			if (hours > 0) {
-				hours--;
-				minutes+=60;
-			}
-			// Otherwise, end timer.
-			else if (hours == 0) {
-				alert('Timer out');
-				clearInterval(intervalID);
-				// If in work mode, 
-				if (timerStatus == 'working') {
-					loopsRan += 1;
-					updateLoopCount()
-					// check if loops done equals to amount wanted. If so, alert()
-					if (loopsRan == loops) {
-						alert("You have finished your loops.");
-					}
-					// Else, if loopsRan smaller than loops, prompt for restTimer
-					else if (loopsRan < loops) {
-						
-						let startRest = confirm('Start rest timer?');
-						if (startRest == true) {
-							startRestTimer();
-						}
-					}
-				} 
-				// If in resting mode,
-				else if (timerStatus == 'resting') {
-					let startWorking = confirm('Breaktime is over, start work?');
-					if (startWorking == true) {
-						StartTimer();
-					}
-				}
-			}
-		}
-	}
-	console.log(hours, minutes, seconds);
-
-	updateTimer();
-
-}
-
-function updateTimer() {
-	displayTime = hours + ':';
-	if ((minutes+'').length == 1) {
-		displayTime = displayTime + '0' + minutes + ':';
-	} else {displayTime += minutes + ':'}
-
-	if ((seconds+'').length == 1) {
-		displayTime = displayTime + '0' + seconds;
-	} else {displayTime += seconds}
-
-	document.getElementById('timerPlace').innerHTML = displayTime;
-}
 
 
-function updateLoopCount() {
-	document.getElementById('displayLoopsHere').innerHTML = 'Loops Completed:' + loopsRan + '/' + loops;
-}
+
 
 function ResetTimer() {
 
@@ -119,8 +41,6 @@ function ResetTimer() {
 	document.getElementById('workTimer').attributes.removeNamedItem('disabled');
 	document.getElementById('start').attributes.removeNamedItem('disabled');
 }
-
-
 
 function startRestTimer() {
 	timerStatus = 'resting';
@@ -138,6 +58,24 @@ function startRestTimer() {
 		alert('Make sure your minute and second values are below 60! hh:59:59')
 	}
 }
+
+function startLongRestTimer() {
+	timerStatus = 'longBreak';
+	console.log(timerStatus);
+	restTimerValue = document.getElementById('longRestTimer').value;
+	restTimerValue = restTimerValue.split(":");
+
+	hours = restTimerValue[0];
+	minutes = restTimerValue[1];
+	seconds = restTimerValue[2];
+
+	if (seconds < 60 & minutes < 60) {
+		intervalID = setInterval(TheTimer, 1000);		
+	} else {
+		alert('Make sure your minute and second values are below 60! hh:59:59')
+	}	
+}
+
 
 // https://stackoverflow.com/questions/457826/pass-parameters-in-setinterval-function
 // https://stackoverflow.com/questions/21277900/how-can-i-pause-setinterval-functions
@@ -166,7 +104,7 @@ function longBreaksCheckbox() {
 		document.getElementById('longRestTimer').style.display = 'block';
 	} else {
 		console.log('Long breaks are disabled')
-		document.getElementById('longRestTimer').style.display = 'none';
+		document.getElementById('longRestTimer').style.display = 'BLOCK'; // CHANGE LATER
 	}	
 }
 // So that state updates with page reload
