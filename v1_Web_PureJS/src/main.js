@@ -14,7 +14,6 @@
 	var restTimer;
 
 // MAIN FUNCTION! 
-	// TO-DO: Make the "check if working or resting its own function"
 	function TheTimer() {
 		// If seconds greater than zero, subtract by 1
 		if (seconds > 0) {
@@ -36,8 +35,8 @@
 				else if (hours == 0) {
 					alert('Timer out');
 					clearInterval(intervalID);
-					// If in work mode, 
-
+					// then,
+					checkTimerStatus()
 				}
 			}
 		}
@@ -47,42 +46,28 @@
 
 // CHECK TIMER STATUS (WORK, REST, LONG REST)
 	function checkTimerStatus() {
-
+		// If in working mode when timer ends:
 		if (timerStatus == 'working') {
 			loopsComplete += 1;
 			updateLoopCount();
 			// If loops completed is equal to loops wanted, end everything
 			if (loopsComplete == loops) {
-				if (longBreaksEnabled == true) {
-					startLongBreak();
+				if (longBreaksEnabled == true) { // Check if long breaks are enabled, if so, start one
+					longBreak();
 				} else {
 					alert('Congratulations, you have finished your loops!');					
 				}
-
 			}
-			// Otherwise,
+			// Otherwise, start normal rest timer
 			else if (loopsRan < loops) {
-
-
+				restTimer()
 			}
 		}
+		// If in resting mode when timer ends: start work timer
+		else if (timerStatus == 'resting') {
+			workTimer()
+		}
 	}
-
-						else if (loopsRan < loops) {
-							
-							let startRest = confirm('Start rest timer?');
-							if (startRest == true) {
-								startRestTimer();
-							}
-						}
-					} 
-					// If in resting mode,
-					else if (timerStatus == 'resting') {
-						let startWorking = confirm('Breaktime is over, start work?');
-						if (startWorking == true) {
-							StartTimer();
-						}
-					}
 
 // UPDATE HEADING TO SHOW TiMER VALUES
 	function updateTimer() {
