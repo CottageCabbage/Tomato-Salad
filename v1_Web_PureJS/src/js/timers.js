@@ -26,8 +26,8 @@
 			timer = document.getElementById('restTimer').value;
 			timer = timer.split(":");
 			hours = timer[0];
-			minutes = restTimerValue[1];
-			seconds = restTimerValue[2];		
+			minutes = timer[1];
+			seconds = timer[2];		
 			// Check if value is valid, if so, start timer. Otherwise, alert.
 			checkValues_startTimer(seconds, minutes);	
 		}
@@ -39,8 +39,8 @@
 			timer = document.getElementById('longRestTimer').value;
 			timer = timer.split(":");
 			hours = timer[0];
-			minutes = restTimerValue[1];
-			seconds = restTimerValue[2];		
+			minutes = timer[1];
+			seconds = timer[2];		
 			// Check if value is valid, if so, start timer. Otherwise, alert.
 			checkValues_startTimer(seconds, minutes);	
 		}

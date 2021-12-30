@@ -3,7 +3,7 @@
 	var timerStatus; // Check if working, resting, longBreak 
 	var loops; // Total of work-periods desired 
 	var loopsComplete = 0; // Work-periods completed
-	var longBreaksEnabled = false; // Check if longBreak Timer is active
+	var longBreaksEnabled = true; // Check if longBreak Timer is active
 	// TIMER
 	var timer; // Values acquired through Inputs
 	var seconds;
@@ -53,13 +53,13 @@
 			// If loops completed is equal to loops wanted, end everything
 			if (loopsComplete == loops) {
 				if (longBreaksEnabled == true) { // Check if long breaks are enabled, if so, start one
-					longBreak();
+					longRestTimer();
 				} else {
 					alert('Congratulations, you have finished your loops!');					
 				}
 			}
 			// Otherwise, start normal rest timer
-			else if (loopsRan < loops) {
+			else if (loopsComplete < loops) {
 				restTimer()
 			}
 		}
@@ -85,5 +85,5 @@
 
 // UPDATE PARAGRAPH TO SHOW LOOPS and LOOPS COMPLETED
 	function updateLoopCount() {
-		document.getElementById('displayLoopsHere').innerHTML = 'Loops Completed:' + loopsRan + '/' + loops;
+		document.getElementById('displayLoopsHere').innerHTML = 'Loops Completed:' + loopsComplete + '/' + loops;
 	}

@@ -1,0 +1,49 @@
+/* General */
+	* {
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+
+	body {
+		background: #555;
+		color: #ccc;
+	}
+
+/* Header */
+	header {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		margin-bottom: 20px;
+		font-family: Arial;
+	}
+
+#container {
+	max-width: 80%;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#timerBlock {
+	width: 50%;
+	height: 400px;
+	background: red;
+	/*display: none;*/
+}
+
+#settingsBlock {
+	width: 50%;
+	height: 400px;
+	background: green;
+	/*display: none;*/
+
+	animation-name: appear;
+	animation-duration: 2s;
+}
+
