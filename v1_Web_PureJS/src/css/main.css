@@ -22,7 +22,7 @@
 	}
 
 #container {
-	max-width: 80%;
+	max-width: 70%;
 	margin: auto;
 	display: flex;
 	flex-direction: row;
@@ -31,19 +31,66 @@
 }
 
 #timerBlock {
+	z-index: 10;
 	width: 50%;
 	height: 400px;
-	background: red;
-	/*display: none;*/
+	background: #333;
+	left: 50%;
 }
 
 #settingsBlock {
-	width: 50%;
+	z-index: 5;
+	width: 0%;
 	height: 400px;
-	background: green;
-	/*display: none;*/
-
-	animation-name: appear;
-	animation-duration: 2s;
+	background: #333;
+	visibility: hidden;
 }
 
+
+.card {
+	display: flex;
+	justify-content: center;
+}
+
+
+
+.openSettings {
+	animation-name: openSettings;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+
+.closeSettings {
+	animation-name: closeSettings;
+	animation-duration: 3s;
+	animation-fill-mode: forwards;	
+}
+
+@keyframes openSettings {
+	0% {
+		width: 0%;
+		opacity: 0;
+	}
+
+	100% {
+		width: 50%;
+		/*opacity: 1;*/
+		visibility: visible;
+		border-left: 3px solid #222;
+	}
+}
+
+@keyframes closeSettings {
+	0% {
+		width: 50%;
+		/*opacity: 1;*/
+	}
+
+	100% {
+		width: 0%;
+		/*right: 50%;*/
+		/*opacity: 0;*/
+		/*visibility: hidden;*/
+		border-left: none;
+	}
+}
