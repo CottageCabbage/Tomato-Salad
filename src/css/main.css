@@ -1,0 +1,72 @@
+/* General */
+	* {
+		margin: 0;
+		border: none;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	body {
+		background-color: #222;
+		color: #ddd;
+		font-family: sans-serif;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	input::-webkit-outer-spin-button, 
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+
+header {
+	display: flex;
+	width: 100%;
+	margin-bottom: auto;
+	padding-top: 15px;
+	justify-content: space-between;
+	background: #111;
+}
+
+h1 {font-size: 25px;
+	position: relative;
+}
+
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+
+
+form label {text-align: center; width: 100%;}
+
+form label input, button {
+	display: block;
+	margin: auto;
+
+	background: #555;
+	color: #eee;
+	padding: 7px;
+	width: 80%;
+}
+
+label + label {margin-top: 12px;}
+button {
+	margin-top: 15px;
+}
+
+
+div {
+	margin-top: 15px;
+	margin-bottom: auto;
+}
