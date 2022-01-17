@@ -39,9 +39,8 @@
 		/**/
 		position: relative;
 		padding: 5px;
+		padding-left: 8px;
 		margin: 0;
-		/**/
-		background: #0F0E0E;
 	}
 
 	#open-settings-button {
@@ -50,119 +49,70 @@
 		height: 70%;
 		width: min-content;
 		background: none;
+		color: #dfdbe5aa;
 	}
 
 	#open-settings-button:hover {
-		color: #dfdbe5aa;
+		color: #dfdbe5;
 		cursor: pointer;
 	}
 	#open-settings-button > svg {
 		height: 100%;
 	}
 
-	#app-title {
-		color: #eee;
-		font-size: 20px;
-		font-weight: 100;
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-
 /* Input Fields */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* FORM  */
-form {
+#timer-values-inputs-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+	padding-top: 5px;
 }
 
+#timer-values-inputs-container > p {
+	font-weight: 1000;
+	margin-bottom: 15px;
+	font-size: 17px;
+}
 
-
-form label {text-align: center; width: 100%; font-size: 18px;}
-
-form label input, button {
-	display: block;
-	margin: auto;
+#timer-values-inputs-container > label {
+	text-align: center;
+	width: 100%;
 	font-size: 16px;
+	margin-bottom: 15px;
+}
+
+.input-timer-values {
+	display: block;
+	width: 65%;
+	margin: auto;
+	margin-top: 5px;
+	padding: 7px;
+	text-align: center;
+	font-size: 20px;
 	background: #555;
 	color: #eee;
-	padding: 7px;
-	width: 80%;
+	border-radius: 5px;
 }
 
-label + label {margin-top: 12px;}
-button {
-	margin-top: 15px;
+.input-timer-values:focus {
+	outline: none;
+	border-bottom: 3px solid #999;
+	background: #444;
 }
 
+#confirm-values	{
+	display: block;
+	width: 30%; height: 40px;
+	background: #333; color: #fff;
 
-div {
-	margin-top: 15px;
-	margin-bottom: auto;
+	margin-top: 5px;
+	border-radius: 3px;
 }
-
-
-
-
-
-
-
-
-
-
-	#presets-tab-button	 {
-		height: 50px; width: 100px;
-		position: relative;
-	    border-top-left-radius: 110px;
-	    border-top-right-radius: 110px;
-	    border: 10px solid gold;
-	    background-color: gold;	
-	    position: absolute;
-	    left: -50px;
-	    bottom: 0;
-	    transition: all .2s ease-in-out;
-	}
-
-	#presets-tab-button:hover {
-		transform: scale(1.2);
-
-	}
-/*	#presets-tab-button:hover {
-		animation-name: grow;
-		animation-duration: 0.5s;
-		animation-fill-mode: forwards;
-	}
-
-	@keyframes grow {
-		100% {
-			transform: scale(1.2);
-			bottom: 5px;
-		}
-	}
+#confirm-values:hover {
+	background: green;
+}
+#confirm-values:active {
+	background: red;
+}
