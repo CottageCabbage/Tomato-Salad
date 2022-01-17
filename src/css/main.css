@@ -4,40 +4,97 @@
 		border: none;
 		padding: 0;
 		box-sizing: border-box;
+		overflow: hidden;
 	}
 	body {
-		background-color: #222;
-		color: #ddd;
-		font-family: sans-serif;
-		width: 100vw;
-		height: 100vh;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		/**/
+		width: 100vw;
+		height: 100vh;
+		/**/
+		background-color: #191A19;
+		color: #dfdbe5;
+		font-family: sans-serif;
+	}
+	/* Remove Number Input Arrows */
+		input::-webkit-outer-spin-button, 
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		input[type=number] {
+			-moz-appearance:  textfield;
+		}
+
+/* Header */ 
+	header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 		align-items: center;
-	}
-
-	input::-webkit-outer-spin-button, 
-	input::-webkit-inner-spin-button {
-		-webkit-appearance: none;
+		/**/
+		width: 100%;
+		height: 60px;
+		/**/
+		position: relative;
+		padding: 5px;
 		margin: 0;
+		/**/
+		background: #0F0E0E;
 	}
 
+	#open-settings-button {
+		margin: 0;
+		padding: 0;
+		height: 70%;
+		width: min-content;
+		background: none;
+	}
 
-header {
-	display: flex;
-	width: 100%;
-	margin-bottom: auto;
-	padding-top: 15px;
-	justify-content: space-between;
-	background: #111;
-}
+	#open-settings-button:hover {
+		color: #dfdbe5aa;
+		cursor: pointer;
+	}
+	#open-settings-button > svg {
+		height: 100%;
+	}
 
-h1 {font-size: 25px;
-	position: relative;
-}
+	#app-title {
+		color: #eee;
+		font-size: 20px;
+		font-weight: 100;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+/* Input Fields */
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FORM  */
 form {
 	display: flex;
 	flex-direction: column;
@@ -48,12 +105,12 @@ form {
 
 
 
-form label {text-align: center; width: 100%;}
+form label {text-align: center; width: 100%; font-size: 18px;}
 
 form label input, button {
 	display: block;
 	margin: auto;
-
+	font-size: 16px;
 	background: #555;
 	color: #eee;
 	padding: 7px;
@@ -70,3 +127,42 @@ div {
 	margin-top: 15px;
 	margin-bottom: auto;
 }
+
+
+
+
+
+
+
+
+
+
+	#presets-tab-button	 {
+		height: 50px; width: 100px;
+		position: relative;
+	    border-top-left-radius: 110px;
+	    border-top-right-radius: 110px;
+	    border: 10px solid gold;
+	    background-color: gold;	
+	    position: absolute;
+	    left: -50px;
+	    bottom: 0;
+	    transition: all .2s ease-in-out;
+	}
+
+	#presets-tab-button:hover {
+		transform: scale(1.2);
+
+	}
+/*	#presets-tab-button:hover {
+		animation-name: grow;
+		animation-duration: 0.5s;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes grow {
+		100% {
+			transform: scale(1.2);
+			bottom: 5px;
+		}
+	}
