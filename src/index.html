@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Tomato Salad </title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/input-container.css">
+	<link rel="stylesheet" type="text/css" href="css/timer-container.css">
 
 </head>
 <body>
@@ -12,28 +13,45 @@
 		<button id="open-settings-button">
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" /></svg>
 		</button>
-
 	</header>
 
 	<div id="timer-values-inputs-container">
 		<p>Type in Timer Values</p>
 		<label for="">
 			Work Period
-			<input type="number" id="" class="input-timer-values" required name="" tabindex="1"></label>
+			<input type="number" id="work-input" class="input-timer-values" required name="" tabindex="1"></label>
 		<label for="">
 			Short Break Period
-			<input type="number" id="" class="input-timer-values" required name="" tabindex="2"></label>
+			<input type="number" id="short-break-input" class="input-timer-values" required name="" tabindex="2"></label>
 		<label for="">
 			Long Break Period
-			<input type="number" id="" class="input-timer-values" required name="" tabindex="3"></label>
+			<input type="number" id="long-break-input" class="input-timer-values" required name="" tabindex="3"></label>
 		<label for="">
 			Loops
-			<input type="number" id="" class="input-timer-values" required name="" tabindex="4"></label>
+			<input type="number" id="loops-input" class="input-timer-values" required name="" tabindex="4"></label>
 
 		<button id="confirm-values" onclick="check_if_values_work()">Done</button>
 	</div>
 
+	<div id="timer-display-container">,
+		<div id="timer">
+			<div class="base-timer">
+				<svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+					<g class="base-timer__circle">
+						<circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+						<path id="base-timer-path-remaining" stroke-dasharray="283" class="base-timer__path-remaining ${remainingPathColor}" d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"></path>
+					</g>
+				</svg>
+				<span id="base-timer-label" class="base-timer__label"></span>
+			</div>
+		</div>
+	</div>
 
+
+
+
+	<div id="preset-timer-values-button"></div>
+	<div id="placeholder-tab-button"></div>
 </body>
 </html>
 
