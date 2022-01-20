@@ -15,25 +15,25 @@
 
 // FUNCTIONS
 
-function swap_tabs() { // CHANGE LATER, MAKE IT PRETTY ~~~
-	document.getElementById('timer-values-inputs-container').style.display = 'none';
-	document.getElementById('timer-display-container').style.display = 'flex';
-}
+	
 
 function update_loops_label() {
 	document.getElementById('loops-completed-label').innerHTML = loops_complete + '/' + loops;
 }
 
+function get_inputs() {
+	work_timer = parseInt(document.getElementById('work-input').value);
+	short_break_timer = parseInt(document.getElementById('short-break-input').value);
+	long_break_timer = parseInt(document.getElementById('long-break-input').value);
+	loops = parseInt(document.getElementById('loops-input').value);
+}
+
 function check_if_values_valid() {
-	// Get values from inputs, set them as variables. Round them down if floats.
-		work_timer = parseInt(document.getElementById('work-input').value);
-		short_break_timer = parseInt(document.getElementById('short-break-input').value);
-		long_break_timer = parseInt(document.getElementById('long-break-input').value);
-		loops = parseInt(document.getElementById('loops-input').value);
+	get_inputs()
 
 	// Check if everything above 0
 	if ((work_timer > 0) && (short_break_timer > 0) && (long_break_timer > 0) && (loops > 0)) {
-		swap_tabs();
+		swap_tabs('timer-values-inputs-container', 'timer-display-container');
 
 		TIME_LIMIT = work_timer + 1;
 		startTimer()

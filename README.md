@@ -25,6 +25,17 @@ My attempts at making a Pomodoro Timer. Currently, it's only html-css-js, couple
 
 
 
+### User Stories
++ Add pause/resume/reset button to timer-tab. (Disable tab-switch buttons when timer is active?)
++ Add noise when timers completed!
++ Color coding: {work=x} {short-break=y} {long-break=z} (think of colors later)
+---
++ Presets tab, where typical pomodoro (25-5-15-4) timer-preset will be there by default. New presets can be added.
+	+ Ltr in settings tab: option about which tab (between inputs and presets) will be opened by default on app start.
+	+ Figure out a way to save presets. Do cookies work on Electron apps? Otherwise, local files? .json maybe. 
+
+
+
 ### Reference
 + https://github.com/roldanjr/pomatez (Typescript)
 + https://github.com/karimdaghari/pomotroid (Vue)
