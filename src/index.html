@@ -30,7 +30,7 @@
 			Loops
 			<input type="number" id="loops-input" class="input-timer-values" required name="" tabindex="4"></label>
 
-		<button id="confirm-values" onclick="check_if_values_work()">Done</button>
+		<button id="confirm-values" onclick="check_if_values_valid()">Done</button>
 	</div>
 
 	<div id="timer-display-container">,
@@ -45,6 +45,10 @@
 				<span id="base-timer-label" class="base-timer__label"></span>
 			</div>
 		</div>
+
+		<span id="loops-completed-label">
+			0/0
+		</span>
 	</div>
 
 

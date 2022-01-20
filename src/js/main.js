@@ -1,58 +1,46 @@
-// How should it work?
+// GLOBAL VARIABLES
+	let timer_status = 'work'; // 'work', 'short-breat' 'long-break'
+	// Timer values
+	let work_timer;
+	let short_break_timer;
+	let long_break_timer;
+	let loops;
+	let loops_complete = 0;
+	// Reference Variables?
+	let TIME_LIMIT;
+	let timePassed = 0;
+	let timeLeft = TIME_LIMIT;
+	let timerInterval = null;
 
-// Once inputs
 
+// FUNCTIONS
 
+function swap_tabs() { // CHANGE LATER, MAKE IT PRETTY ~~~
+	document.getElementById('timer-values-inputs-container').style.display = 'none';
+	document.getElementById('timer-display-container').style.display = 'flex';
+}
 
+function update_loops_label() {
+	document.getElementById('loops-completed-label').innerHTML = loops_complete + '/' + loops;
+}
 
+function check_if_values_valid() {
+	// Get values from inputs, set them as variables. Round them down if floats.
+		work_timer = parseInt(document.getElementById('work-input').value);
+		short_break_timer = parseInt(document.getElementById('short-break-input').value);
+		long_break_timer = parseInt(document.getElementById('long-break-input').value);
+		loops = parseInt(document.getElementById('loops-input').value);
 
-
-
-
-
-let timer_status = 'work'; // 'work', 'shortBreat' 'longBreak'
-
-// Timer
-let work_timer;
-let short_break_timer;
-let long_break_timer;
-let loops;
-let loops_complete = 0;
-
-function check_if_values_work() {
-	work_timer = parseInt(document.getElementById('work-input').value);
-	short_break_timer = parseInt(document.getElementById('short-break-input').value);
-	long_break_timer = parseInt(document.getElementById('long-break-input').value);
-	loops = parseInt(document.getElementById('loops-input').value);
-
-	// CHANGE LATER, MAKE IT PRETTY ~~~
+	// Check if everything above 0
 	if ((work_timer > 0) && (short_break_timer > 0) && (long_break_timer > 0) && (loops > 0)) {
-		document.getElementById('timer-values-inputs-container').style.display = 'none'
-		document.getElementById('timer-display-container').style.display = 'flex';
+		swap_tabs();
 
-		TIME_LIMIT = work_timer /* *60 */;
+		TIME_LIMIT = work_timer + 1;
 		startTimer()
 	} else {
-		alert('Values should be Integers above 0')
+		alert('Values should be Integers above 0');
 	}
 }
-
-// Function that is called at END of timer (replace onTimesUp?), to check
-function check_timer_status() {
-	if (timer_status == 'work') {
-		loops_complete += 1;
-		if (loops_complete < loops) {
-			console.log('one more!')
-			check_if_values_work()
-		} else if (loops_complete == loops) {
-			console.log("we/'re done here!")
-		}
-	}
-}
-
-
-
-
 
 
 
@@ -75,27 +63,73 @@ function check_timer_status() {
 				threshold: ALERT_THRESHOLD
 			}
 		};
-
-	// Timer variables.
-		let TIME_LIMIT;
-		let timePassed = 0;
-		let timeLeft = TIME_LIMIT;
-		let timerInterval = null;
 		// let remainingPathColor = COLOR_CODES.info.color;
 
 
 function onTimesUp() {
 	clearInterval(timerInterval);
+	switch (timer_status) {
+		case 'work':
+			loops_complete += 1;
+			update_loops_label();
+			if (loops_complete < loops) {
+				callTimer('start-short-break');
+			} else {
+				callTimer('start-long-break');
+			}
+			break;
+
+		case 'short-break':
+			callTimer('start-work');
+			break;
+
+		case 'long-break':
+			console.log('long break finished. Pomodoro finished')
+	}	
 }
 
+function callTimer(next_timer) {
+	switch (next_timer) {
+		case 'start-work':
+			// RESET VARIABLES
+			timer_status = 'work';
+			TIME_LIMIT = work_timer + 1;
+			timePassed = 0;
+			timeLeft = TIME_LIMIT;
+			timerInterval = null;
+			// Start
+			startTimer();
+			break;
+
+		case 'start-short-break':
+			console.log('beep boop');
+			// RESET VARIABLES
+			timer_status = 'short-break';
+			TIME_LIMIT = short_break_timer + 1;
+			timePassed = 0;
+			timeLeft = TIME_LIMIT;
+			timerInterval = null;
+			// Start
+			startTimer();
+			break;
+
+		case 'start-long-break':
+			console.log('boop beep');
+			// RESET VARIABLES
+			timer_status = 'long-break';
+			TIME_LIMIT = long_break_timer + 1;
+			timePassed = 0;
+			timeLeft = TIME_LIMIT;
+			timerInterval = null;
+			// Start
+			startTimer();
+			break;
+	}
+}
+
+
 function startTimer() {
-	// Start interval: every 1 second, 
-	 // timePassed++, 
-	 // update timeLeft, 
-	 // update Label info, 
-	 // update timerProgress, 
-	 // update Colors !!(probably can delete. Need color coding for Work and Short-Long Breaks)!!
-	console.log(loops)
+	update_loops_label();
 	timerInterval = setInterval(() => {
 		timePassed = timePassed += 1;
 		timeLeft = TIME_LIMIT - timePassed;
