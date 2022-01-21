@@ -7,14 +7,20 @@
 	<link rel="stylesheet" type="text/css" href="css/input-container.css">
 	<link rel="stylesheet" type="text/css" href="css/timer-container.css">
 	<link rel="stylesheet" type="text/css" href="css/presets.css">
-
+	<link rel="stylesheet" type="text/css" href="css/settings.css">
 </head>
 <body>
 	<header>
 		<button id="open-settings-button">
-			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" /></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+				<path id='setting-icon' d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+			</svg>
 		</button>
 	</header>
+
+	<div id="settings-container">
+		
+	</div>
 
 	<div id="timer-values-inputs-container">
 		<p>Type in Timer Values</p>
@@ -34,7 +40,7 @@
 		<button id="confirm-values">Done</button>
 	</div>
 
-	<div id="timer-display-container">,
+	<div id="timer-display-container">
 		<div id="timer">
 			<div class="base-timer">
 				<svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -46,10 +52,21 @@
 				<span id="base-timer-label" class="base-timer__label"></span>
 			</div>
 		</div>
-
 		<span id="loops-completed-label">
 			0/0
 		</span>
+		
+		<button id="pause-timer" onclick="pause_timer()">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+				<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+			</svg>
+		</button>
+
+		<button id="cancel-timer">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+				<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+			</svg>
+		</button>
 	</div>
 
 	<div id="preset-timers-container">

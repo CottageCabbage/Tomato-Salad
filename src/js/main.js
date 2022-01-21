@@ -178,3 +178,22 @@ function setCircleDasharray() {
 	const circleDasharray = `${(calculateTimeFraction() * FULL_DASH_ARRAY).toFixed(0)} 283`;
 	document.getElementById("base-timer-path-remaining").setAttribute("stroke-dasharray", circleDasharray);
 }
+
+
+// function ResetTimer() {
+// 	// Make everything zero
+// 	clearInterval(intervalID);
+// 	hours = 0; minutes = 0; seconds = 0;
+// 	console.log(hours, minutes, seconds);
+// 	document.getElementById('timerPlace').innerHTML = '00:00:00';
+// 	// Enable everything back again
+// 	document.getElementById('workTimer').disabled = false;
+// 	document.getElementById('restTimer').disabled = false;
+// 	document.getElementById('loops').disabled = false;
+// 	document.getElementById('start').disabled = false;
+// }
+
+
+function pause_timer() {
+	console.log("HEllo")
+}

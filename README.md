@@ -45,3 +45,8 @@ My attempts at making a Pomodoro Timer. Currently, it's only html-css-js, couple
 + https://github.com/schmich/marinara (Vue, Ruby)
 + https://github.com/adrcotfas/Goodtime (Kotlin, ANDROID)
 
+> https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
+
+**Important:**
++ https://stackoverflow.com/questions/16134997/how-to-pause-and-resume-a-javascript-timer
+Currently using setInterval, looks like I'll have to change that for accuracy. 
