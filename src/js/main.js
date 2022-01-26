@@ -14,8 +14,7 @@
 
 
 // FUNCTIONS
-
-	
+document.getElementById("start-timer-button").addEventListener("click", check_if_values_valid);
 
 function update_loops_label() {
 	document.getElementById('loops-completed-label').innerHTML = loops_complete + '/' + loops;

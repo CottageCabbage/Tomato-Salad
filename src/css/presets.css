@@ -1,3 +1,57 @@
-#preset-timers-container {
-	display: none;
+* {overflow: visible !important;}
+#presets-container {
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	overflow: scroll;
+	padding-bottom: 15px;
+}
+
+
+.preset-timer {
+	width: 80%;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.preset-title {
+	margin-bottom: 5px;
+	font-size: 13px;
+}
+
+.preset-content {
+	width: 100%;
+	font-weight: bold;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	padding: 7px;
+	border: 1px solid #FFD933;
+	border-radius: 18px;
+	
+	transition: all 1s;
+}
+
+.preset-content:hover {
+	transform: scale(1.05);
+	background: gold;
+	color: black;
+}
+
+.delete-preset, .start-preset {
+	width: 25px;
+	height: 25px;
+}
+
+.delete-preset > svg, .start-preset > svg {
+	width: 25px; height: 25px;
+}
+
+.values-go-here {
+	
 }

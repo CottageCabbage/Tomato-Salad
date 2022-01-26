@@ -2,27 +2,6 @@
 
 My attempts at making a Pomodoro Timer. Currently, it's only html-css-js, coupled with Electron. Maybe in the future, once I'm more familiar with then, will try to make it with some Framework. 
 
-<h2 align='center'>Goals:</h2>
-
-### GUI:
-
-#### General:
-+ At all times, in the bottom left and right corners of the screen, will be two buttons. Through then, alternate between tabs of application. Supposed to work with left and right arrows too. Maybe option to hide them. When alternating between tabs, the buttons available are supposed to change too.
-
-+ The SETTINGS button, however, is static, and will always be on the top-left corner of the screen.
-
-#### TIMER:
-+ Once inputs (Integers above 0 (Checked with the `check_if_values_valid` function)) have been typed in, and the '#confirm-values' button clicked, swap tabs from "#timer-values-inputs-container" to "#timer-display-container". 
-
-> Now, this is done through alternating through .style.display = 'none'/'flex'. In the future, make this prettier (transition? Left-to-right, or opacity change, coupled with z-index?). Relevant function is `swap_tabs()`.
-
-> If values not valid, an alert is called. That's also pretty ugly. Change it if possible. 
-
-+ Once values have been validated and tabs swapped, call for `startTimer()` with the variable `work_timer` as parameter. The variable `timer_status` should also be set to 'work', through this may be done outside of function. 
-
-
-
-
 
 
 ### User Stories
@@ -31,8 +10,12 @@ My attempts at making a Pomodoro Timer. Currently, it's only html-css-js, couple
 + Color coding: {work=x} {short-break=y} {long-break=z} (think of colors later)
 ---
 + Presets tab, where typical pomodoro (25-5-15-4) timer-preset will be there by default. New presets can be added.
-	+ Ltr in settings tab: option about which tab (between inputs and presets) will be opened by default on app start.
 	+ Figure out a way to save presets. Do cookies work on Electron apps? Otherwise, local files? .json maybe. 
+---
+
+Add icons to swap tab buttons. [Input (Timer), Presets, Stopwatch]
+
+Swap tabs with arrow keys too? Could use @keyup but the buttons would have to be selected? Maybe event listener, then query for the button with the right class, and execute it's @click?
 
 
 
@@ -50,3 +33,10 @@ My attempts at making a Pomodoro Timer. Currently, it's only html-css-js, couple
 **Important:**
 + https://stackoverflow.com/questions/16134997/how-to-pause-and-resume-a-javascript-timer
 Currently using setInterval, looks like I'll have to change that for accuracy. 
+
+#### For Icons
+https://iconoir.com/  
+https://iconscout.com/  
+#### For Sounds
+https://pixabay.com/sound-effects/  
+https://www.videvo.net/royalty-free-sound-effects/  

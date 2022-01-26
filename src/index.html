@@ -4,43 +4,76 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Tomato Salad </title>
+
 	<link rel="stylesheet" type="text/css" href="css/input-container.css">
 	<link rel="stylesheet" type="text/css" href="css/timer-container.css">
 	<link rel="stylesheet" type="text/css" href="css/presets.css">
 	<link rel="stylesheet" type="text/css" href="css/settings.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style>
+		[v-cloak] {display: none;}
+	</style>
 </head>
-<body>
+<body id="app" v-cloak>
+
 	<header>
-		<button id="open-settings-button">
+		<!-- If on Settings Tab: display... -->
+		<button v-show="tab == 'settings_container'" class="toogle_settings_button" @click="tab = default_tab" tabindex="-1">
+			<!-- Close Settings Icon -->
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+				<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+			</svg>
+		</button>
+		<!-- If not on Settings Tab: display... -->
+		<button v-show="tab !== 'settings_container'" class="toogle_settings_button" @click="tab = 'settings_container'" tabindex="-1">
+			<!-- Open Settings Icon -->
+			<svg  xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 				<path id='setting-icon' d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
 			</svg>
 		</button>
 	</header>
 
-	<div id="settings-container">
+	<div id="settings-container" v-show="tab == 'settings_container'">
 		
+		<div class="option">
+			<p>Default Tab:</p>
+			<label>
+				<input type="radio" name="default_tab" v-model="default_tab" v-bind:value="'input_container'">
+				Inputs
+			</label>
+			<label>
+				<input type="radio" name="default_tab" v-model="default_tab" v-bind:value="'presets_container'">
+				Presets
+			</label>
+			<label>
+				<input type="radio" name="default_tab" v-model="default_tab" v-bind:value="'stopwatch_container'">
+				Stopwatch
+			</label>
+		</div>
+
+		<div class="option"><p>Focus/Breaks Notification: Todo</p></div>
+		<div class="option"><p>Looping music while on focus/break?: Todo</p></div>
+
 	</div>
 
-	<div id="timer-values-inputs-container">
-		<p>Type in Timer Values</p>
+	<div id="timer-values-inputs-container" v-show="tab == 'input_container'">
 		<label for="">
-			Work Period
+			Focus Length
 			<input type="number" id="work-input" class="input-timer-values" required name="" tabindex="1"></label>
 		<label for="">
-			Short Break Period
+			Short Break Length
 			<input type="number" id="short-break-input" class="input-timer-values" required name="" tabindex="2"></label>
 		<label for="">
-			Long Break Period
+			Long Break Length
 			<input type="number" id="long-break-input" class="input-timer-values" required name="" tabindex="3"></label>
 		<label for="">
 			Loops
 			<input type="number" id="loops-input" class="input-timer-values" required name="" tabindex="4"></label>
 
-		<button id="confirm-values">Done</button>
+		<button id="start-timer-button">Done</button>
 	</div>
 
-	<div id="timer-display-container">
+	<div id="timer-display-container" v-show="tab == 'timer_container'">
 		<div id="timer">
 			<div class="base-timer">
 				<svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -69,17 +102,36 @@
 		</button>
 	</div>
 
-	<div id="preset-timers-container">
-		<button id="pomodoro-preset-test">25-5-15-4</button>
-		<div>Add others</div>
+	<div id="presets-container" v-show="tab == 'presets_container'">
+		<preset-timer />
 	</div>
 
+	<div id="stopwatch-container" v-show="tab == 'stopwatch_container'">
+		<h3>STOPWATCh</h3>
+	</div>
 
-	<button id="preset-timer-values-button"></button>
-	<div id="placeholder-tab-button"></div>
+	<!-- Switch between tabs: INPUTS/PRESETS/STOPWATCH -->
+	<button id="preset-tab-button" class="corner-button" v-show="tab !== 'presets_container' & tab !== 'settings_container'" @click="tab = 'presets_container'" :class="(tab=='stopwatch_container')?'bottom-right-button':'bottom-left-button'">B</button>
 
-	<script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript" src="js/other.js"></script>
+	<button id="inputs-tab-button" class="corner-button" v-show="tab !== 'input_container' & tab !== 'settings_container'" @click="tab = 'input_container'" :class="(tab=='presets_container')?'bottom-right-button':'bottom-left-button'">A</button>
+
+	<button id="stopwatch-tab-button" class="corner-button" v-show="tab !== 'stopwatch_container' & tab !== 'settings_container'" @click="tab = 'stopwatch_container'" :class="(tab=='presets_container')?'bottom-left-button':'bottom-right-button'">C</button>
+
+
+	<!-- SCRIPT TAGS -->
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/other.js"></script>
+
+		<!-- VUE -->
+		<script src="https://unpkg.com/vue@next"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
 </body>
 </html>
+
+
+<!-- :class="{'bottom-right-button': tab == 'stopwatch_container'}" -->
+
+
+
+
 

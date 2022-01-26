@@ -1,68 +1,11 @@
-/* General */
-	* {
-		margin: 0;
-		border: none;
-		padding: 0;
-		box-sizing: border-box;
-		overflow: hidden;
-		/*-webkit-touch-callout: none;*/
-		/*-webkit-user-select: none;*/
-		/*-moz-user-select: none;*/
-		/*-ms-user-select: none;*/
-		/*user-select: none;*/
-	}
-	body {
-		display: flex;
-		flex-direction: column;
-		/**/
-		width: 100vw;
-		height: 100vh;
-		/**/
-		background-color: #191A19;
-		color: #dfdbe5;
-		font-family: sans-serif;
-	}
-	/* Remove Number Input Arrows */
-		input::-webkit-outer-spin-button, 
-		input::-webkit-inner-spin-button {
-			-webkit-appearance: none;
-			margin: 0;
-		}
-		input[type=number] {
-			-moz-appearance:  textfield;
-		}
-
-/* Header */ 
-	header {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		/**/
-		width: 100%;
-		height: 60px;
-		/**/
-		position: relative;
-		padding: 5px;
-		padding-left: 8px;
+/* Remove Number Input Arrows */
+	input::-webkit-outer-spin-button, 
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
 		margin: 0;
 	}
-
-	#open-settings-button {
-		margin: 0;
-		padding: 0;
-		height: 70%;
-		width: min-content;
-		background: none;
-		color: #dfdbe5aa;
-	}
-
-	#open-settings-button:hover {
-		color: #dfdbe5;
-		cursor: pointer;
-	}
-	#open-settings-button > svg {
-		height: 100%;
+	input[type=number] {
+		-moz-appearance:  textfield;
 	}
 
 /* Input Fields */
@@ -130,26 +73,3 @@
 
 
 
-#preset-timer-values-button {
-	height: 50px; width: 100px;
-
-	position: absolute;	
-	bottom: 0;
-	left: -50px;
-
-	border-top-right-radius: 110px;
-	border: 10px solid gold;
-	background: gold;
-}
-
-#placeholder-tab-button {
-	height: 50px; width: 100px;
-
-	position: absolute;	
-	bottom: 0;
-	right: -50px;
-
-	border-top-left-radius: 110px;
-	border: 10px solid gold;
-	background: gold;
-}

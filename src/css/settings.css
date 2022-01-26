@@ -1,3 +1,17 @@
 #settings-container {
-	display: none;
+	display: flex;
+	flex-direction: column;
+}
+
+.option {
+	width: 80vw;
+	text-align: center;
+}
+.option p {
+	font-weight: bold;
+	font-size: 17px;
+}
+
+.option > label {
+	display: block;
 }
