@@ -3,10 +3,40 @@ let app = Vue.createApp({
 		return {
 			// Tabs Open/Closed
 			default_tab: "input_container",
-			tab: 'presets_container', // input/timer/presets/settings
-			test_var: true,
+			tab: 'input_container', // input/timer/presets/settings
+			
+			timer_status: 'work',
+			work_length: '',
+			short_break_length: '',
+			long_break_length: '',
+			loops: '',
+			loops_elapsed: '',
+
+			timer: ''
 		}
 	},
+
+	methods: {
+		check_values() {
+			if (this.work_length > 0 && this.short_break_length > 0 
+			&& this.long_break_length > 0 && this.loops > 0) {	
+
+				this.tab = 'timer_container'
+
+				this.timer = this.start_timer(this.work_length, 'base-timer-label')
+			}
+
+			else {
+				console.log('nope')
+			}
+		},
+
+		// base-timer-label
+		start_timer(seconds, container, oncomplete) {
+			
+		}
+
+	}
 })
 
 
@@ -27,7 +57,12 @@ app.component('preset-timer', {
 					</svg>
 				</span>
 
-				<span class="values-go-here">{{preset.work}}:{{preset.short_break}}:{{preset.long_break}}:{{preset.loops}}</span>
+				<span class="values-go-here">
+					{{preset.preset_work}}:
+					{{preset.preset_short_break}}:
+					{{preset.preset_long_break}}:
+					{{preset.preset_loops}}
+				</span>
 				
 				<span class="start-preset">
 					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -43,13 +78,8 @@ app.component('preset-timer', {
 	data() {
 		return {
 			preset_timers: [
-				{work: '25', short_break: '30', long_break: '50', loops: '4', title: "Cirillo's Pomodoro"},
-				{work: '30', short_break: '15', long_break: '40', loops: '3', title: "Test"},
-				{work: '30', short_break: '15', long_break: '40', loops: '3', title: "Test"},
-				{work: '30', short_break: '15', long_break: '40', loops: '3', title: "Test"},
-				{work: '30', short_break: '15', long_break: '40', loops: '3', title: "Test"},
-				{work: '30', short_break: '15', long_break: '40', loops: '3', title: "Test"},
-				{work: '30', short_break: '15', long_break: '40', loops: '3', title: "Test"},	
+				{preset_work: '25', preset_short_break: '30', preset_long_break: '50', preset_loops: '4', title: "Cirillo's Pomodoro"},
+				{preset_work: '30', preset_short_break: '15', preset_long_break: '40', preset_loops: '3', title: "Test"},	
 			]
 		}
 	}

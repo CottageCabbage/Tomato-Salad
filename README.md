@@ -18,6 +18,10 @@ Add icons to swap tab buttons. [Input (Timer), Presets, Stopwatch]
 Swap tabs with arrow keys too? Could use @keyup but the buttons would have to be selected? Maybe event listener, then query for the button with the right class, and execute it's @click?
 
 
++ Auto-start Work/Break timers (Setting, checkbox)
+
++ Maybe option for some music on repeat? Lo-fi?
+
 
 ### Reference
 + https://github.com/roldanjr/pomatez (Typescript)

@@ -39,8 +39,8 @@
 
 .preset-content:hover {
 	transform: scale(1.05);
-	background: gold;
-	color: black;
+
+	
 }
 
 .delete-preset, .start-preset {
@@ -54,4 +54,11 @@
 
 .values-go-here {
 	
+}
+
+.delete-preset:hover, .start-preset:hover {
+	color: #bbb;
+}
+.delete-preset:active, .start-preset:active {
+	color: #aaa;
 }
