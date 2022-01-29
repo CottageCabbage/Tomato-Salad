@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Tomato Salad </title>
 
-	<link rel="stylesheet" type="text/css" href="css/input-container.css">
-	<link rel="stylesheet" type="text/css" href="css/timer-container.css">
+	<link rel="stylesheet" type="text/css" href="css/inputs.css">
+	<link rel="stylesheet" type="text/css" href="css/timer.css">
 	<link rel="stylesheet" type="text/css" href="css/presets.css">
 	<link rel="stylesheet" type="text/css" href="css/settings.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -97,7 +97,7 @@
 				/>
 			</label>
 
-			<button @click="check_values">Done</button>
+			<button id="submit-values-button" @click="check_values">Done</button>
 		</div>
 
 
@@ -118,7 +118,17 @@
 				0/0
 			</span>
 			
-			<button id="pause-timer" onclick="pause_timer()">
+			<button id="pause-timer" 
+				@click="timer.pause()" 
+				v-if="timer_state != 'paused'">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+					<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+				</svg>
+			</button>
+
+			<button id="resume-timer" 
+				@click="timer.resume()" 
+				v-if="timer_state == 'paused'">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 					<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
 				</svg>

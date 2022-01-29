@@ -4,7 +4,7 @@ My attempts at making a Pomodoro Timer. Currently, it's only html-css-js, couple
 
 
 
-### User Stories
+### Roadmap
 + Add pause/resume/reset button to timer-tab. (Disable tab-switch buttons when timer is active?)
 + Add noise when timers completed!
 + Color coding: {work=x} {short-break=y} {long-break=z} (think of colors later)
@@ -23,24 +23,14 @@ Swap tabs with arrow keys too? Could use @keyup but the buttons would have to be
 + Maybe option for some music on repeat? Lo-fi?
 
 
-### Reference
-+ https://github.com/roldanjr/pomatez (Typescript)
-+ https://github.com/karimdaghari/pomotroid (Vue)
-+ https://github.com/gnome-pomodoro/gnome-pomodoro (Vala?? Never heard about it. Saving just in case)
-+ https://github.com/RoderickQiu/wnr (Electron & Vue?)
-+ https://github.com/KeziahMoselle/tempus/releases/tag/v1.7.0 (Electron & React)
-+ https://github.com/schmich/marinara (Vue, Ruby)
-+ https://github.com/adrcotfas/Goodtime (Kotlin, ANDROID)
++ slider in settings for setInterval(obj.step, NUMBER)? affects granularity. Lower numbers are more accurate, also more CPU-expensive
 
-> https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
++ For some reason, am not managing to toogle pause/resume button?  check later. 
 
-**Important:**
-+ https://stackoverflow.com/questions/16134997/how-to-pause-and-resume-a-javascript-timer
-Currently using setInterval, looks like I'll have to change that for accuracy. 
 
 #### For Icons
 https://iconoir.com/  
-https://iconscout.com/  
+https://heroicons.com/
 #### For Sounds
 https://pixabay.com/sound-effects/  
 https://www.videvo.net/royalty-free-sound-effects/  

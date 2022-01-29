@@ -19,7 +19,7 @@
 	}
 
 
-	#timer-values-inputs-container {
+	#inputs-container {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -28,20 +28,20 @@
 		padding-top: 5px;
 	}
 
-	#timer-values-inputs-container > p {
+	#inputs-container > p {
 		font-weight: 1000;
 		margin-bottom: 15px;
 		font-size: 17px;
 	}
 
-	#timer-values-inputs-container > label {
+	#inputs-container > label {
 		text-align: center;
 		width: 100%;
 		font-size: 16px;
 		margin-bottom: 15px;
 	}
 
-	.input-timer-values {
+	.timer-input {
 		display: block;
 		width: 65%;
 		margin: auto;
@@ -54,32 +54,27 @@
 		border-radius: 5px;
 	}
 
-	.input-timer-values:focus {
+	.timer-input:focus {
 		outline: none;
 		border-bottom: 3px solid #999;
 		background: #444;
 	}
 
-	#confirm-values	{
-		display: block;
-		width: 30%; height: 40px;
+	#submit-values-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100px; height: 40px;
 		background: #333; color: #fff;
-
-		margin-top: 5px;
+		font-size: 15px;
+		margin-top: 20px;
 		border-radius: 3px;
 	}
 	
-/* DEV */
-	#confirm-values:hover {
-		background: green;
-	}
-	#confirm-values:active {
-		background: red;
+	#submit-values-button:hover {
+		border: 1px solid #999;
 	}
 
-	#timer-values-inputs-container {
-		/*display: none;*/
+	#submit-values-button:active {
+		background: #222;
 	}
-
-
-

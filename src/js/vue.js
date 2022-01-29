@@ -5,14 +5,15 @@ let app = Vue.createApp({
 			default_tab: "input_container",
 			tab: 'input_container', // input/timer/presets/settings
 			
-			timer_status: 'work',
+			timer_type: 'work',
 			work_length: '',
 			short_break_length: '',
 			long_break_length: '',
 			loops: '',
 			loops_elapsed: '',
 
-			timer: ''
+			timer: '',
+			timer_state: '',
 		}
 	},
 
@@ -21,9 +22,10 @@ let app = Vue.createApp({
 			if (this.work_length > 0 && this.short_break_length > 0 
 			&& this.long_break_length > 0 && this.loops > 0) {	
 
-				this.tab = 'timer_container'
+				this.tab = 'timer_container';
 
-				this.timer = this.start_timer(this.work_length, 'base-timer-label')
+				let timer_label = document.getElementById('base-timer-label')
+				this.timer = this.start_timer(this.work_length * 60, timer_label);
 			}
 
 			else {
@@ -32,9 +34,51 @@ let app = Vue.createApp({
 		},
 
 		// base-timer-label
-		start_timer(seconds, container, oncomplete) {
+		start_timer(seconds, container) {
+			var startTime, timer, obj, ms = seconds * 1000,
+				display = container;
+
+			obj = {};
+
+			obj.resume = function() {
+				this.timer_state = 'ongoing';
+
+				startTime = new Date().getTime();
+				timer = setInterval(obj.step, 250);
+			};
+
+			obj.pause = function() {
+				this.timer_state = 'paused';
+				
+				ms = obj.step();
+				clearInterval(timer);
+
+
+			}
+
+			obj.step = function() {
+				var now = Math.max(0, ms-(new Date().getTime()-startTime)),
+					m = Math.floor(now/60000), s = Math.floor(now/1000)%60;
 			
-		}
+				// if seconds below '10', add a '0' in front of it. 
+				s = (s < 10 ? "0" : "")+s;
+				// update timer label
+				display.innerHTML = m+":"+s;
+
+				if (now == 0) {
+					clearInterval(timer);
+					obj.resume = function() {};
+					var audio = new Audio('../assets/windchime.mp3');
+					audio.play();
+				}
+				return now;
+			};
+
+			obj.resume();
+			return obj;
+		},
+
+
 
 	}
 })
@@ -78,8 +122,19 @@ app.component('preset-timer', {
 	data() {
 		return {
 			preset_timers: [
-				{preset_work: '25', preset_short_break: '30', preset_long_break: '50', preset_loops: '4', title: "Cirillo's Pomodoro"},
-				{preset_work: '30', preset_short_break: '15', preset_long_break: '40', preset_loops: '3', title: "Test"},	
+				{title: "Cirillo's Pomodoro",
+					preset_work: '25', 
+					preset_short_break: '30', 
+					preset_long_break: '50', 
+					preset_loops: '4', 
+				},
+				
+				{title: "Test",
+					preset_work: '30', 
+					preset_short_break: '15', 
+					preset_long_break: '40', 
+					preset_loops: '3', 
+				},	
 			]
 		}
 	}

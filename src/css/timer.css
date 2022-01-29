@@ -6,7 +6,7 @@
 	flex-direction: column;
 }
 
-#pause-timer {
+#pause-timer, #resume-timer {
 	/*position: relative;*/
 	background: none;
 	color: white;
