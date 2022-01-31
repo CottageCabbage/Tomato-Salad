@@ -10,7 +10,7 @@ let app = Vue.createApp({
 			short_break_length: '',
 			long_break_length: '',
 			loops: '',
-			loops_elapsed: '',
+			loops_elapsed: 0,
 
 			timer: '',
 			timer_state: '',
@@ -49,11 +49,8 @@ let app = Vue.createApp({
 
 			obj.pause = function() {
 				this.timer_state = 'paused';
-				
 				ms = obj.step();
 				clearInterval(timer);
-
-
 			}
 
 			obj.step = function() {
@@ -68,8 +65,7 @@ let app = Vue.createApp({
 				if (now == 0) {
 					clearInterval(timer);
 					obj.resume = function() {};
-					var audio = new Audio('../assets/windchime.mp3');
-					audio.play();
+					this.whenTimerDone('lol')
 				}
 				return now;
 			};
@@ -78,8 +74,22 @@ let app = Vue.createApp({
 			return obj;
 		},
 
+		
+		whenTimerDone(message) {
+			console.log(message)
 
-
+			// switch (this.timer_type) {
+			// 	case 'work':
+			// 		this.loops_elapsed += 1;
+			// 		var audio = new Audio('../assets/windchime.mp3');
+			// 		audio.play();
+			// 		// Update loop label
+			// 		if (loops > loops_elapsed) {
+			// 			alert('starting break')
+			// 		} else if (loops == loops_elapsed) {
+			// 			alert('timer finished')
+			// 		}
+			},
 	}
 })
 

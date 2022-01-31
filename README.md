@@ -19,6 +19,9 @@ Swap tabs with arrow keys too? Could use @keyup but the buttons would have to be
 
 
 + Auto-start Work/Break timers (Setting, checkbox)
+	+ For now, use alert() if on, and confirm if off
+
+
 
 + Maybe option for some music on repeat? Lo-fi?
 
@@ -26,6 +29,10 @@ Swap tabs with arrow keys too? Could use @keyup but the buttons would have to be
 + slider in settings for setInterval(obj.step, NUMBER)? affects granularity. Lower numbers are more accurate, also more CPU-expensive
 
 + For some reason, am not managing to toogle pause/resume button?  check later. 
+
+
++ For some reason, can't call method from within method? Really have to make some progress on the Vue Course before continuing this.
+
 
 
 #### For Icons
