@@ -65,7 +65,7 @@ let app = Vue.createApp({
 				if (now == 0) {
 					clearInterval(timer);
 					obj.resume = function() {};
-					this.whenTimerDone('lol')
+					this.when_timer_ends()
 				}
 				return now;
 			};
@@ -73,10 +73,9 @@ let app = Vue.createApp({
 			obj.resume();
 			return obj;
 		},
-
-		
-		whenTimerDone(message) {
-			console.log(message)
+	
+		when_timer_ends() {
+			console.log('Hello')
 
 			// switch (this.timer_type) {
 			// 	case 'work':
