@@ -60,6 +60,11 @@
 		background: #444;
 	}
 
+	#inputs-button-container {
+		display: flex;
+		position: relative;
+	}
+
 	#submit-values-button {
 		display: flex;
 		align-items: center;
@@ -71,10 +76,20 @@
 		border-radius: 3px;
 	}
 	
-	#submit-values-button:hover {
+	#save-as-preset-button {
+		position: absolute;
+		right: -50px;
+		background-color: #333; color: #fff;
+		border-radius: 50%;
+		width: 30px; height: 30px;
+		font-weight: bold;
+		font-size: 16px;
+	}
+
+	#submit-values-button:hover, #save-as-preset-button:hover {
 		border: 1px solid #999;
 	}
 
-	#submit-values-button:active {
+	#submit-values-button:active, #save-as-preset-button:active {
 		background: #222;
 	}

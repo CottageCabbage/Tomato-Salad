@@ -4,14 +4,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Tomato Salad </title>
-
+	
 	<link rel="stylesheet" type="text/css" href="css/inputs.css">
 	<link rel="stylesheet" type="text/css" href="css/timer.css">
 	<link rel="stylesheet" type="text/css" href="css/presets.css">
 	<link rel="stylesheet" type="text/css" href="css/settings.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<style>
-		[v-cloak] {display: none;}
+		[v-cloak] {display: none !important;}
 	</style>
 </head>
 <body>
@@ -97,7 +97,10 @@
 				/>
 			</label>
 
-			<button id="submit-values-button" @click="check_values">Done</button>
+			<div id="inputs-button-container">
+				<button id="submit-values-button" @click="check_values('y')">Done</button>
+				<button id="save-as-preset-button" @click="check_values('x')">+</button>
+			</div>
 		</div>
 
 

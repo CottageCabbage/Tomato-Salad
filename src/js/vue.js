@@ -18,14 +18,22 @@ let app = Vue.createApp({
 	},
 
 	methods: {
-		check_values() {
+		check_values(conditional) {
 			if (this.work_length > 0 && this.short_break_length > 0 
 			&& this.long_break_length > 0 && this.loops > 0) {	
 
-				this.tab = 'timer_container';
+				switch (conditional) {
+					case 'x':
+						this.save_as_preset();
+						break;
+					case 'y':
+						this.tab = 'timer_container';
+						let timer_label = document.getElementById('base-timer-label')
+						this.timer = this.start_timer(this.work_length * 60, timer_label);
+						break;						
+				}
 
-				let timer_label = document.getElementById('base-timer-label')
-				this.timer = this.start_timer(this.work_length * 60, timer_label);
+
 			}
 
 			else {
@@ -33,7 +41,6 @@ let app = Vue.createApp({
 			}
 		},
 
-		// base-timer-label
 		start_timer(seconds, container) {
 			var startTime, timer, obj, ms = seconds * 1000,
 				display = container;
@@ -88,7 +95,14 @@ let app = Vue.createApp({
 			// 		} else if (loops == loops_elapsed) {
 			// 			alert('timer finished')
 			// 		}
-			},
+		},
+
+		save_as_preset() {
+			let x = prompt("Preset's title?");
+			if (x) {
+				console.log("Created Preset: " + x + "\nFocus Length: " + this.work_length + "\nShort Break Length: " + this.short_break_length + "\nLong Break Length: " + this.long_break_length + "\nLoops: " + this.loops)
+			}
+		}
 	}
 })
 
@@ -117,7 +131,7 @@ app.component('preset-timer', {
 					{{preset.preset_loops}}
 				</span>
 				
-				<span class="start-preset">
+				<span class="start-preset" @click="">
 					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 						<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 
 						8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
@@ -131,7 +145,7 @@ app.component('preset-timer', {
 	data() {
 		return {
 			preset_timers: [
-				{title: "Cirillo's Pomodoro",
+				{title: "Cirilio's Pomodoro",
 					preset_work: '25', 
 					preset_short_break: '30', 
 					preset_long_break: '50', 
