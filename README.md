@@ -1,13 +1,27 @@
-<h1 align='center'>TomatoSalad</h1>
-My attempt at creating a Pomodoro Timer as I learn JS-Vue-Electron. Currently in development and unusable
+# tomato-salad
 
----
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+> https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/#to-start-a-development-server
 
 
-### USEFUL RESOURCES
-#### For Icons
-https://iconoir.com/  
-https://heroicons.com/
-#### For Sounds
-https://pixabay.com/sound-effects/  
-https://www.videvo.net/royalty-free-sound-effects/  
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
