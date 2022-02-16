@@ -1,89 +1,102 @@
 #timer-display-container {
 	position: relative;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	padding-top: 50px;
 }
 
-#pause-timer, #resume-timer {
-	/*position: relative;*/
-	background: none;
-	color: white;
-	width: 60px; height: 60px;
-	/*margin-top: 20px;*/
-}
-#pause-timer:hover {color: #ddd; cursor: pointer;}
-#pause-timer:active {color: #aaa;}
-
-
-
-#cancel-timer {
-	background: none;
-	color: white;
-	width: 50px; height: 50px;
-	position: relative;
-	bottom: 100px;
-	right: -100px;
-}
-#cancel-timer:hover {color: #ddd; cursor: pointer;}
-#cancel-timer:active {color: #aaa;}
-
-
-
-/* CSS TRICK */
-#timer {
-	padding-bottom: 20px;
-}
+/* TIMER */
 .base-timer {
-position: relative;
+	position: relative;
 	width: 300px;
 	height: 300px;
 }
 
 .base-timer__svg {
-transform: scaleX(-1);
+	transform: scaleX(-1);
 }
 
 .base-timer__circle {
-fill: none;
-stroke: none;
+	fill: none;
+	stroke: none;
 }
 
 .base-timer__path-elapsed {
-stroke-width: 7px;
-stroke: grey;
+	stroke-width: 7px;
+	stroke: grey;
 }
 
 .base-timer__path-remaining {
-stroke-width: 7px;
-stroke-linecap: round;
-transform: rotate(90deg);
-transform-origin: center;
-transition: 1s linear all;
-fill-rule: nonzero;
-stroke: currentColor;
+	stroke-width: 7px;
+	stroke-linecap: round;
+	transform: rotate(90deg);
+	transform-origin: center;
+	transition: 1s linear all;
+	fill-rule: nonzero;
+	stroke: currentColor;
 }
 
 .base-timer__path-remaining.green {
-color: rgb(65, 184, 131);
+	color: rgb(65, 184, 131);
 }
 
 .base-timer__path-remaining.orange {
-color: orange;
+	color: orange;
 }
 
 .base-timer__path-remaining.red {
-color: red;
+	color: red;
 }
 
 .base-timer__label {
-position: absolute;
-width: 300px;
-height: 300px;
-top: 0;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 48px;
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 48px;
+}
+
+/* Buttons */
+#stateButtonsContainer {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+#stateButtonsContainer > button {
+	width: 55px;
+	height: 55px;
+	background-color: transparent;
+	border: none;
+	color: white;
+	position: relative;
+	transition: transform 0.5s, color 1s;
+}
+
+#stateButtonsContainer > button:hover, #stateButtonsContainer > button:focus  {
+	outline: none;
+	transform: scale(1.1);
+	color: #ccc;
+}
+
+#stateButtonsContainer > button:active {
+	color: grey;
+	transition: none;
+}
+
+#pause-button, #resume-button {
+	margin-top: 10px;
+}
+
+#cancel-button {
+	position: absolute !important;
+	right: 10%;
+	top: -75%;
 }
