@@ -12,6 +12,9 @@ npm run serve
 
 > https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/#to-start-a-development-server
 
+```
+npm run electron:serve
+```
 
 ### Compiles and minifies for production
 ```

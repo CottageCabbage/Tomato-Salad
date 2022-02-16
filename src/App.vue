@@ -1,30 +1,43 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <router-view
+    :timerValues="timerValues"
+    :checkValues="checkValues"
+  />
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import '@/assets/styles/main.css'
 
-#nav {
-  padding: 30px;
-}
+export default {
+  mounted () {
+    this.$router.push({ name: this.defaultTab })
+  },
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  data () {
+    return {
+      defaultTab: 'Timer',
+      timerValues: [{ workLength: '', shortBreakLength: '', longBreakLength: '', loops: '' }]
+    }
+  },
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+  methods: {
+    checkValues (work, sB, lB, loopsInput) {
+      if (work > 0 && sB > 0 && lB > 0 && loopsInput > 0) {
+        this.timerValues[0].workLength = work
+        this.timerValues[0].shortBreakLength = sB
+        this.timerValues[0].longBreakLength = lB
+        this.timerValues[0].loops = loopsInput
+        this.lol()
+      } else {
+        alert("didn't work :(")
+      }
+    },
+    lol () {
+      alert(this.timerValues[0].workLength)
+      alert(this.timerValues[0].shortBreakLength)
+      alert(this.timerValues[0].longBreakLength)
+      alert(this.timerValues[0].loops)
+    }
+  }
 }
-</style>
+</script>

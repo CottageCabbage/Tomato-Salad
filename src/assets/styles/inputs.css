@@ -1,0 +1,42 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#container-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#container-form > label {
+  width: 70%;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.timer-value-input {
+  width: 100%;
+  margin: auto;
+  margin-top: 5px;
+  background-color: #555;
+  color: #eee;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  text-align: center;
+  padding: 7px;
+}
+
+.timer-value-input::after {
+  content: "hello";
+}
+
+.timer-value-input:focus {
+  outline: none;
+  border-bottom: 3px solid #999;
+  background: #444;
+}
