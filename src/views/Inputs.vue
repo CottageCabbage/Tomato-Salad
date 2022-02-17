@@ -39,6 +39,7 @@
     <button @click="checkValues(this.work, this.shortBreak, this.longBreak, this.loopsInput)">
       Start Pomodoro
     </button>
+
   </form>
 </template>
 

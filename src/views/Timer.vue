@@ -54,7 +54,9 @@
 </template>
 <script>
 import '@/assets/styles/timer.css'
+
 export default {
+  props: ['startTimer', 'timerState'],
   data () {
     return {
       timerPaused: true
