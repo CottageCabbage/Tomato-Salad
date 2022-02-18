@@ -56,10 +56,74 @@
 import '@/assets/styles/timer.css'
 
 export default {
-  props: ['startTimer', 'timerState'],
+  props: ['timerValues'],
+  mounted () {
+    this.timerType = 'work'
+    this.startTimer(this.timerValues[0].workLength * 60)
+  },
   data () {
     return {
-      timerPaused: true
+      timerPaused: true,
+      timerState: '',
+      timerType: '',
+      loops: 0
+    }
+  },
+  methods: {
+    startTimer (seconds) {
+      let startTime
+      let timer
+      let ms = seconds * 1000
+
+      var obj
+      obj = {}
+
+      obj.resume = function () {
+        this.timerState = 'ongoing'
+        startTime = new Date().getTime()
+        timer = setInterval(obj.step, 250)
+      }
+
+      obj.pause = function () {
+        this.timerState = 'paused'
+        ms = obj.step()
+        clearInterval(timer)
+      }
+
+      obj.step = function () {
+        var now = Math.max(0, ms - (new Date().getTime() - startTime))
+        var m = Math.floor(now / 60000)
+        var s = Math.floor(now / 1000) % 60
+
+        // if (seconds) below '10', add a '0' in front of it.
+        s = (s < 10 ? '0' : '') + s
+        // update timer label
+        document.getElementById('base-timer-label').innerHTML = m + ':' + s
+
+        if (now === 0) {
+          clearInterval(timer)
+          this.this.nextAction()
+          obj.resume = function () {}
+        }
+
+        return now
+      }
+
+      obj.resume()
+      return obj
+    },
+    nextAction () {
+      // const audio = new Audio(process.env.BASE_URL + 'windchime.mp3')
+      // audio.play()
+      switch (this.timerType) {
+        case 'work':
+          if (this.loops < this.timerValues[0].loops) {
+            alert('1')
+          } else {
+            alert('2')
+          }
+          break
+      }
     }
   }
 }
