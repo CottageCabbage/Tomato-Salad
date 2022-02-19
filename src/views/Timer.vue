@@ -54,6 +54,7 @@
 </template>
 <script>
 import '@/assets/styles/timer.css'
+import windchimeAudio from '@/assets/audio/windchime.mp3'
 
 export default {
   props: ['timerValues'],
@@ -74,6 +75,8 @@ export default {
       let startTime
       let timer
       let ms = seconds * 1000
+
+      const doThing = this.nextAction
 
       var obj
       obj = {}
@@ -102,8 +105,8 @@ export default {
 
         if (now === 0) {
           clearInterval(timer)
-          this.this.nextAction()
           obj.resume = function () {}
+          doThing()
         }
 
         return now
@@ -113,12 +116,12 @@ export default {
       return obj
     },
     nextAction () {
-      // const audio = new Audio(process.env.BASE_URL + 'windchime.mp3')
-      // audio.play()
+      // const audio = new Audio(process.env.BASE_URL + 'windchime.mp3') [Have to move windchime to public]
+      const audio = new Audio(windchimeAudio)
       switch (this.timerType) {
         case 'work':
           if (this.loops < this.timerValues[0].loops) {
-            alert('1')
+            audio.play()
           } else {
             alert('2')
           }

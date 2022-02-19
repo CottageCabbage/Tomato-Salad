@@ -51,7 +51,7 @@ export default {
   props: ['timerValues', 'checkValues'],
   data () {
     return {
-      work: 5,
+      work: 0.1,
       shortBreak: 6,
       longBreak: 8,
       loopsInput: 7
