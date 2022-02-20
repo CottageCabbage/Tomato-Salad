@@ -12,13 +12,47 @@ input::-webkit-inner-spin-button {
 }
 
 #container-form > label {
-  width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
   font-size: 18px;
   margin-bottom: 20px;
+  /* font-weight: bold; */
+}
+
+#container-form > label > span {
+  text-align: center;
+  margin-right: 5px;
+  font-size: 19px;
   font-weight: bold;
+  flex-basis: 100%;
 }
 
 .timer-value-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #7779;
+  color: #eee;
+  /* font-size: 20px; */
+  font-size: 2ch;
+  display: flex;
+  min-width: 100px;
+  width: 100px;
+  max-width: 75% !important;
+  padding: 5px;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.timer-value-input:focus {
+  outline: none;
+  border-bottom: 2px solid #eee;
+}
+
+/* .timer-value-input {
   width: 100%;
   margin: auto;
   margin-top: 5px;
@@ -31,12 +65,27 @@ input::-webkit-inner-spin-button {
   padding: 7px;
 }
 
-.timer-value-input::after {
-  content: "hello";
-}
-
 .timer-value-input:focus {
   outline: none;
   border-bottom: 3px solid #999;
   background: #444;
+} */
+
+#buttonThatStartsTimer {
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 20px;
+  background-color: grey;
+  transition: background-color 0.5s, transform 0.5s;
+}
+#buttonThatStartsTimer:hover, #buttonThatStartsTimer:focus {
+  background-color: pink;
+  transform: scale(1.05);
+  outline: none;
+}
+#buttonThatStartsTimer:active {
+  background-color: #505050;
+  transform: scale(0.95);
+  transition: none;
 }

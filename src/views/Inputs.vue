@@ -1,46 +1,50 @@
 <template>
   <form id="container-form" @submit.prevent>
+
     <label>
-      <span>Focus Period</span>
+      <span>Focus Period:</span>
       <input
         class="timer-value-input"
         type="number" name="" min="0"
         v-model="work"
+        oninput="this.style.width = ((this.value.length + 1) * 16) + 'px'"
       />
     </label>
 
     <label>
-      <span>Short Break Period</span>
+      <span>Short Break Period:</span>
       <input
         class="timer-value-input"
-        type="number" name="" min="0"
+        type="number" name="" min="0" size="1"
         v-model="shortBreak"
+        oninput="this.style.width = ((this.value.length + 1) * 16) + 'px'"
       />
     </label>
 
     <label>
-      <span>Long Break Period</span>
+      <span>Long Break Period:</span>
       <input
         class="timer-value-input"
         type="number" name="" min="0"
         v-model="longBreak"
+        oninput="this.style.width = ((this.value.length + 1) * 16) + 'px'"
       />
     </label>
 
     <label>
-      <span>Loops</span>
+      <span>Loops:</span>
       <input
         class="timer-value-input"
         type="number" name="" min="0"
         v-model="loopsInput"
+        oninput="this.style.width = ((this.value.length + 1) * 16) + 'px'"
       />
     </label>
 
-    <button @click="checkValues(this.work, this.shortBreak, this.longBreak, this.loopsInput)">
+    <button @click="checkValues(this.work, this.shortBreak, this.longBreak, this.loopsInput)"
+      id="buttonThatStartsTimer">
       Start Pomodoro
     </button>
-
-    <span id="HEY">ay</span>
   </form>
 </template>
 
@@ -51,10 +55,10 @@ export default {
   props: ['timerValues', 'checkValues'],
   data () {
     return {
-      work: 25,
-      shortBreak: 5,
-      longBreak: 15,
-      loopsInput: 4
+      work: '',
+      shortBreak: '',
+      longBreak: '',
+      loopsInput: ''
     }
   },
   methods: {
