@@ -2,6 +2,7 @@
   <router-view
     :timerValues="timerValues"
     :checkValues="checkValues"
+    :defaultTab="defaultTab"
   />
 </template>
 

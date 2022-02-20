@@ -54,17 +54,20 @@
 </template>
 <script>
 import '@/assets/styles/timer.css'
+
 import windchimeAudio from '@/assets/audio/windchime.mp3'
+import crowdCheerAudio from '@/assets/audio/crowd_cheer.mp3'
 
 export default {
-  props: ['timerValues'],
+  props: ['timerValues', 'defaultTab'],
   mounted () {
+    this.updateLoopsLabel()
     this.timerType = 'work'
     this.startTimer(this.timerValues[0].workLength * 60)
   },
   data () {
     return {
-      timerPaused: true,
+      timerPaused: false,
       timerState: '',
       timerType: '',
       loops: 0
@@ -116,17 +119,43 @@ export default {
       return obj
     },
     nextAction () {
-      // const audio = new Audio(process.env.BASE_URL + 'windchime.mp3') [Have to move windchime to public]
-      const audio = new Audio(windchimeAudio)
+      let audio
+
       switch (this.timerType) {
         case 'work':
+          this.loops += 1
+          this.updateLoopsLabel()
+          audio = new Audio(windchimeAudio)
           if (this.loops < this.timerValues[0].loops) {
             audio.play()
+            if (confirm('Start Short Break?')) {
+              this.timerType = 'shortBreak'
+              this.startTimer(this.timerValues[0].shortBreakLength * 60)
+            }
           } else {
-            alert('2')
+            if (confirm('Start Long Break?')) {
+              this.timerType = 'longBreak'
+              this.startTimer(this.timerValues[0].longBreakLength * 60)
+            }
           }
           break
+        case 'shortBreak':
+          if (confirm('Start Working?')) {
+            this.timerType = 'work'
+            this.startTimer(this.timerValues[0].workLength * 60)
+          }
+          break
+        case 'longBreak':
+          alert('You have completed your Pomodoro')
+          audio = new Audio(crowdCheerAudio)
+          audio.play()
+          this.$router.push({ name: this.defaultTab })
+          break
       }
+    },
+    updateLoopsLabel () {
+      const label = document.getElementById('loops-completed-label')
+      label.innerHTML = (this.loops + '/' + this.timerValues[0].loops)
     }
   }
 }

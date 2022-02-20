@@ -51,10 +51,10 @@ export default {
   props: ['timerValues', 'checkValues'],
   data () {
     return {
-      work: 0.1,
-      shortBreak: 6,
-      longBreak: 8,
-      loopsInput: 7
+      work: 25,
+      shortBreak: 5,
+      longBreak: 15,
+      loopsInput: 4
     }
   },
   methods: {
