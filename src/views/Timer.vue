@@ -22,7 +22,8 @@
     </span>
 
     <div id="stateButtonsContainer">
-      <button id="pause-button" v-if="timerPaused == false">
+      <button id="pause-button" v-if="timerPaused == false"
+        @click="timer.pause(); timerPaused = true">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path
             fill-rule="evenodd"
@@ -33,7 +34,8 @@
         </svg>
       </button>
 
-      <button id="resume-button" v-if="timerPaused == true">
+      <button id="resume-button" v-if="timerPaused == true"
+        @click="timer.resume(); timerPaused = false">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
         </svg>
@@ -63,14 +65,14 @@ export default {
   mounted () {
     this.updateLoopsLabel()
     this.timerType = 'work'
-    this.startTimer(this.timerValues[0].workLength * 60)
+    this.timer = this.startTimer(this.timerValues[0].workLength * 60)
   },
   data () {
     return {
       timerPaused: false,
-      timerState: '',
       timerType: '',
-      loops: 0
+      loops: 0,
+      timer: ''
     }
   },
   methods: {
@@ -85,13 +87,11 @@ export default {
       obj = {}
 
       obj.resume = function () {
-        this.timerState = 'ongoing'
         startTime = new Date().getTime()
         timer = setInterval(obj.step, 250)
       }
 
       obj.pause = function () {
-        this.timerState = 'paused'
         ms = obj.step()
         clearInterval(timer)
       }
