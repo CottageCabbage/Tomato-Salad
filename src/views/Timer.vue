@@ -1,26 +1,14 @@
 <template>
 
-  <div id="timer-display-container">
+  <div id="timerContainer">
 
-    <div class="base-timer">
-      <span>{{}}</span>
-      <!-- <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <g class="base-timer__circle">
-          <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-          <path
-            id="base-timer-path-remaining"
-            stroke-dasharray="283"
-            class="base-timer__path-remaining ${remainingPathColor}"
-            d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0">
-          </path>
-        </g>
-      </svg> -->
-      <span id="base-timer-label" class="base-timer__label"></span>
+    <div id="infoContainer">
+      <span id="typeLabel">{{updateTypeLabel()}}</span>
+
+      <span id="timerLabel"></span>
+
+      <span id="loopsLabel">0/0</span>
     </div>
-
-    <span id="loops-completed-label">
-      0/0
-    </span>
 
     <div id="stateButtonsContainer">
       <button id="pause-button" v-if="timerPaused == false"
@@ -42,7 +30,7 @@
         </svg>
       </button>
 
-      <button id="cancel-button">
+      <button id="cancel-button" @click="timer.cancel(); timerPaused = false">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293
@@ -57,6 +45,7 @@
 </template>
 <script>
 import '@/assets/styles/timer.css'
+import router from '@/router'
 
 import windchimeAudio from '@/assets/audio/windchime.mp3'
 import crowdCheerAudio from '@/assets/audio/crowd_cheer.mp3'
@@ -105,7 +94,7 @@ export default {
         // if (seconds) below '10', add a '0' in front of it.
         s = (s < 10 ? '0' : '') + s
         // update timer label
-        document.getElementById('base-timer-label').innerHTML = m + ':' + s
+        document.getElementById('timerLabel').innerHTML = m + ':' + s
 
         if (now === 0) {
           clearInterval(timer)
@@ -114,6 +103,11 @@ export default {
         }
 
         return now
+      }
+      obj.cancel = function () {
+        clearInterval(timer)
+        obj.resume = function () {}
+        router.push({ name: this.defaultTab })
       }
 
       obj.resume()
@@ -162,8 +156,18 @@ export default {
       }
     },
     updateLoopsLabel () {
-      const label = document.getElementById('loops-completed-label')
+      const label = document.getElementById('loopsLabel')
       label.innerHTML = (this.loops + '/' + this.timerValues[0].loops)
+    },
+    updateTypeLabel () {
+      switch (this.timerType) {
+        case 'work':
+          return 'WORK'
+        case 'shortBreak':
+          return 'Short Break'
+        case 'longBreak':
+          return 'Long Break'
+      }
     }
   }
 }
