@@ -3,7 +3,8 @@
   <div id="timer-display-container">
 
     <div class="base-timer">
-      <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <span>{{}}</span>
+      <!-- <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <g class="base-timer__circle">
           <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
           <path
@@ -13,7 +14,7 @@
             d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0">
           </path>
         </g>
-      </svg>
+      </svg> -->
       <span id="base-timer-label" class="base-timer__label"></span>
     </div>
 
@@ -122,29 +123,36 @@ export default {
       let audio
 
       switch (this.timerType) {
+        // If just finished 'work' timer...
         case 'work':
+          // update loops
           this.loops += 1
           this.updateLoopsLabel()
-          audio = new Audio(windchimeAudio)
+          // and check if loops lower than the value typed in
           if (this.loops < this.timerValues[0].loops) {
+            // If so, play audio and
+            audio = new Audio(windchimeAudio)
             audio.play()
+            // prompt to start Short Break timer
             if (confirm('Start Short Break?')) {
               this.timerType = 'shortBreak'
-              this.startTimer(this.timerValues[0].shortBreakLength * 60)
+              this.timer = this.startTimer(this.timerValues[0].shortBreakLength * 60)
             }
-          } else {
+          } else { // Otherwise, prompt to start Long Break.
             if (confirm('Start Long Break?')) {
               this.timerType = 'longBreak'
-              this.startTimer(this.timerValues[0].longBreakLength * 60)
+              this.timer = this.startTimer(this.timerValues[0].longBreakLength * 60)
             }
           }
           break
+        // If just finished 'short break' timer, prompt to start work
         case 'shortBreak':
           if (confirm('Start Working?')) {
             this.timerType = 'work'
-            this.startTimer(this.timerValues[0].workLength * 60)
+            this.timer = this.startTimer(this.timerValues[0].workLength * 60)
           }
           break
+        // If just finished 'long break', alert, play audio and push to default tab
         case 'longBreak':
           alert('You have completed your Pomodoro')
           audio = new Audio(crowdCheerAudio)
