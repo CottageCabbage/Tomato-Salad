@@ -42,12 +42,12 @@
 
 #stateButtonsContainer > button:hover, #stateButtonsContainer > button:focus  {
 	outline: none;
-	transform: scale(1.1);
-	color: #ccc;
+	transform: scale(1.2);
+	color: #888;
 }
 
 #stateButtonsContainer > button:active {
-	color: grey;
+	color: #555;
 	transition: none;
 }
 
@@ -58,4 +58,11 @@
 #cancel-button {
 	position: absolute !important;
 	right: 10%;
+	top: -10px;
+}
+
+#modify-button {
+	position: absolute;
+	left: 10%;
+	top: -10px;
 }
