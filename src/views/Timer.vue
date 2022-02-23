@@ -76,8 +76,8 @@ export default {
       let startTime
       let timer
       let ms = seconds * 1000
-
       const doThing = this.nextAction
+      const goBack = this.goBackToDefault
 
       var obj
       obj = {}
@@ -113,7 +113,7 @@ export default {
       obj.cancel = function () {
         clearInterval(timer)
         obj.resume = function () {}
-        this.$router.push({ name: this.defaultTab })
+        goBack()
       }
       obj.modify = function () {
         ms += 5 * 1000 * 60
@@ -177,6 +177,9 @@ export default {
         case 'longBreak':
           return 'Long Break'
       }
+    },
+    goBackToDefault () {
+      this.$router.push({ name: this.defaultTab })
     }
   }
 }
