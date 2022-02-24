@@ -1,0 +1,19 @@
+h1 {
+  text-align: center;
+}
+
+.preset {
+  background-color: grey;
+  display: flex;
+  width: 80%;
+  margin: auto;
+  border-radius: 5px;
+  padding: 5px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.presetValues {
+  font-size: 20px;
+  font-weight: bold;
+}

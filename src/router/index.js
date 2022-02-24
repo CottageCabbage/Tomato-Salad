@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Inputs from '../views/Inputs.vue'
 import Timer from '@/views/Timer.vue'
+import Presets from '@/views/Presets.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/Timer',
     name: 'Timer',
     component: Timer
+  },
+  {
+    path: '/Presets',
+    name: 'Presets',
+    component: Presets
   }
 ]
 
