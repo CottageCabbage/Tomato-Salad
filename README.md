@@ -29,10 +29,11 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-# Audio Files taken from
+# Attribution
+**ICONS:**
++ https://heroicons.com/
++ https://app.streamlinehq.com/icons/streamline-mini-line
 
-https://www.videvo.net/sound-effect/crowd-cheer-appls-out-pe944402/240755/
-
-and
-
-Music from <a href="https://pixabay.com/music/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=7065">Pixabay</a>
+**AUDIO:**
++ https://pixabay.com/sound-effects/search/Windchime/
++ https://www.videvo.net/sound-effect/crowd-cheer-appls-out-pe944402/240755/

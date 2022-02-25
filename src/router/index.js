@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import Inputs from '../views/Inputs.vue'
 import Timer from '@/views/Timer.vue'
 import Presets from '@/views/Presets.vue'
+import Stopwatch from '@/views/Stopwatch.vue'
+import Settings from '@/views/Settings.vue'
 
 const routes = [
   {
@@ -18,6 +21,16 @@ const routes = [
     path: '/Presets',
     name: 'Presets',
     component: Presets
+  },
+  {
+    path: '/Stopwatch',
+    name: 'Stopwatch',
+    component: Stopwatch
+  },
+  {
+    path: '/Settings',
+    name: 'Settings',
+    component: Settings
   }
 ]
 

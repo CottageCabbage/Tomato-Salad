@@ -9,3 +9,34 @@ body {
   color: #eee;
   font-family: sans-serif;
 }
+
+/* Nav Bar */
+#leftNavBar {
+  position: fixed;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.changeViewsBtn {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  stroke: #eee;
+  color: #eee;
+  transition: transform 0.5s, stroke 0.5s;
+}
+
+.changeViewsBtn:hover {
+  transform: scale(1.2);
+  stroke: #aaa;
+  color: #aaa;
+}
+
+.changeViewsBtn svg {
+  width: 30px;
+  height: 30px;
+}
