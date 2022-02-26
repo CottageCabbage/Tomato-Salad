@@ -8,7 +8,6 @@
         type="number" name="" min="0"
         v-model="work"
         oninput="this.style.width = ((this.value.length + 1) * 16) + 'px'"
-        @keydown.esc="blurInputs()"
       />
     </label>
 
@@ -19,7 +18,6 @@
         type="number" name="" min="0" size="1"
         v-model="shortBreak"
         oninput="this.style.width = ((this.value.length + 1) * 16) + 'px'"
-        @keydown.esc="blurInputs()"
       />
     </label>
 
@@ -30,7 +28,6 @@
         type="number" name="" min="0"
         v-model="longBreak"
         oninput="this.style.width = ((this.value.length + 1) * 16) + 'px'"
-        @keydown.esc="blurInputs()"
       />
     </label>
 
@@ -39,15 +36,21 @@
       <input
         class="timer-value-input" id="loopTimesInput"
         type="number" name="" min="0"
-        v-model="loopsInput"
+        v-model="loops"
         oninput="this.style.width = ((this.value.length + 1) * 16) + 'px'"
-        @keydown.esc="blurInputs()"
       />
     </label>
 
-    <button @click="checkValues(this.work, this.shortBreak, this.longBreak, this.loopsInput)"
+    <button
+      @click="checkValues(this.work, this.shortBreak, this.longBreak, this.loops)"
       id="buttonThatStartsTimer">
       Start Pomodoro
+    </button>
+
+    <button
+      @click="addToPresets(this.work, this.shortBreak, this.longBreak, this.loops)"
+      id="buttonThatCreatesPreset">
+      Add to Presets
     </button>
   </form>
 </template>
@@ -56,22 +59,27 @@
 import '@/assets/styles/inputs.css'
 
 export default {
-  props: ['timerValues', 'checkValues'],
+  props: ['checkValues'],
   data () {
     return {
       work: '',
       shortBreak: '',
       longBreak: '',
-      loopsInput: ''
+      loops: ''
     }
   },
   methods: {
-    blurInputs () {
-      document.getElementById('workInput').blur()
-      document.getElementById('shortInput').blur()
-      document.getElementById('longInput').blur()
-      document.getElementById('loopTimesInput').blur()
-      // document.querySelectorAll('.timer-value-input').blur()
+    addToPresets (a, b, c, d) {
+      const newPreset = [{ work: a, shortBreak: b, longBreak: c, loops: d }]
+
+      // If key 'presets' does not exist, create it as an array containing newPreset
+      if (localStorage.getItem('presets') === null) {
+        localStorage.setItem('presets', [JSON.stringify(newPreset)])
+      } else {
+        const presetsJSON = JSON.parse(localStorage.getItem('presets'))
+        presetsJSON.concat(newPreset)
+        localStorage.setItem('presets', JSON.stringify(presetsJSON))
+      }
     }
   }
 }

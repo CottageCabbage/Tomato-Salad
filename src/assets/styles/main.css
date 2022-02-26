@@ -19,6 +19,9 @@ body {
 
   display: flex;
   flex-direction: column;
+
+  border-right: 2px dotted #bbb;
+  border-radius: 6px;
 }
 
 .changeViewsBtn {

@@ -57,12 +57,12 @@
 
 #cancel-button {
 	position: absolute !important;
-	right: 10%;
+	right: 20%;
 	top: -10px;
 }
 
 #modify-button {
 	position: absolute;
-	left: 10%;
+	left: 20%;
 	top: -10px;
 }
