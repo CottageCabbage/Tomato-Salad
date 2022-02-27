@@ -70,15 +70,20 @@ export default {
   },
   methods: {
     addToPresets (a, b, c, d) {
-      const newPreset = [{ work: a, shortBreak: b, longBreak: c, loops: d }]
-
-      // If key 'presets' does not exist, create it as an array containing newPreset
+      const newPreset = [{ workLen: a, shortBreakLen: b, longBreakLen: c, loopsTim: d }]
+      // If key 'presets' does not exist...
       if (localStorage.getItem('presets') === null) {
-        localStorage.setItem('presets', [JSON.stringify(newPreset)])
+        // create a new array, push newPreset and set it in localStorage
+        const x = []
+        x.push(newPreset)
+        localStorage.setItem('presets', JSON.stringify(x))
       } else {
         const presetsJSON = JSON.parse(localStorage.getItem('presets'))
-        presetsJSON.concat(newPreset)
+        presetsJSON.push(newPreset)
         localStorage.setItem('presets', JSON.stringify(presetsJSON))
+      //   const presetsJSON = JSON.parse(localStorage.getItem('presets'))
+      //   presetsJSON.concat(newPreset)
+      //   localStorage.setItem('presets', JSON.stringify(presetsJSON))
       }
     }
   }

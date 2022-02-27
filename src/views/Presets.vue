@@ -1,10 +1,15 @@
 <template>
   <h1>Presets</h1>
 
-  <div v-for="(preset, i) in presets" :key="i">
-    <span v-for="(value, k) in preset" :key="k">
+  <div v-for="(preset, i) in presetsOBJ" :key="i">
+    {{ preset[0] }} |
+    {{ preset[0].workLen }} |
+    {{ preset[0].shortBreakLen }} |
+    {{ preset[0].longBreakLen }} |
+    {{ preset[0].loopsTim }}
+    <!-- <span v-for="(value, k) in preset" :key="k">
       {{ value }} |
-    </span>
+    </span> -->
   </div>
 
 </template>
@@ -17,13 +22,12 @@ export default {
   },
   data () {
     return {
-      presets: ''
+      presetsOBJ: ''
     }
   },
   methods: {
     getPresets () {
-      this.presets = JSON.parse(localStorage.getItem('presets'))
-      // console.log(this.presets)
+      this.presetsOBJ = JSON.parse(localStorage.getItem('presets'))
     }
   }
 }
