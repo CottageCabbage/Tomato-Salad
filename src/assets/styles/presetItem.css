@@ -1,0 +1,19 @@
+.presetCard {
+  position: relative;
+  width: 70%;
+  margin: auto; margin-top: 10px;
+
+  display: flex;
+  justify-content: center;
+
+  text-align: center;
+  padding: 7px;
+  font-weight: bold;
+  background-color: grey;
+  border-radius: 5px;
+}
+
+.buttonsGoHere {
+  position: absolute;
+  right: 0;
+}

@@ -2,9 +2,9 @@
   <h1>Presets</h1>
 
   <div v-for="(preset, i) in presetsOBJ" :key="i" >
-    {{ preset[0] }} |
     <presetItem
       :presetValues="preset[0]"
+      :index="i"
     />
   </div>
 
