@@ -81,9 +81,6 @@ export default {
         const presetsJSON = JSON.parse(localStorage.getItem('presets'))
         presetsJSON.push(newPreset)
         localStorage.setItem('presets', JSON.stringify(presetsJSON))
-      //   const presetsJSON = JSON.parse(localStorage.getItem('presets'))
-      //   presetsJSON.concat(newPreset)
-      //   localStorage.setItem('presets', JSON.stringify(presetsJSON))
       }
     }
   }

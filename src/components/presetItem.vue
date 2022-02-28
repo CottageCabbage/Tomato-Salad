@@ -7,7 +7,13 @@
       {{ presetValues.loopsTim }}
     </div>
     <div class="buttonsGoHere">
-      <button>Play</button>
+      <button @click="checkValues(
+        presetValues.workLen,
+        presetValues.shortBreakLen,
+        presetValues.longBreakLen,
+        presetValues.loopsTim)">
+        Play
+      </button>
       <button @click="deletePreset()">Delete</button>
     </div>
   </div>
@@ -15,7 +21,7 @@
 <script>
 import '@/assets/styles/presetItem.css'
 export default {
-  props: ['presetValues', 'index'],
+  props: ['presetValues', 'index', 'checkValues'],
   data () {
     return {
 

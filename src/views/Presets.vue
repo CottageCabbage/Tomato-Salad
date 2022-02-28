@@ -5,6 +5,7 @@
     <presetItem
       :presetValues="preset[0]"
       :index="i"
+      :checkValues="checkValues"
     />
   </div>
 
@@ -14,13 +15,18 @@ import '@/assets/styles/presets.css'
 import PresetItem from '@/components/presetItem.vue'
 
 export default {
+  props: ['checkValues'],
+
   mounted () {
+    this.getPresets()
+  },
+  updated () {
     this.getPresets()
   },
   components: { PresetItem },
   data () {
     return {
-      presetsOBJ: ''
+      presetsOBJ: JSON.parse(localStorage.getItem('presets'))
     }
   },
   methods: {
