@@ -41,17 +41,19 @@
       />
     </label>
 
-    <button
-      @click="checkValues(this.work, this.shortBreak, this.longBreak, this.loops)"
-      id="buttonThatStartsTimer">
-      Start Pomodoro
-    </button>
+    <div id="timerButtons">
+      <button
+        @click="checkValues(this.work, this.shortBreak, this.longBreak, this.loops)"
+        id="buttonThatStartsTimer">
+        Start Timer
+      </button>
 
-    <button
-      @click="addToPresets(this.work, this.shortBreak, this.longBreak, this.loops)"
-      id="buttonThatCreatesPreset">
-      Add to Presets
-    </button>
+      <button
+        @click="addToPresets(this.work, this.shortBreak, this.longBreak, this.loops)"
+        id="buttonThatCreatesPreset">
+        Add to Presets
+      </button>
+    </div>
   </form>
 </template>
 

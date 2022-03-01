@@ -6,7 +6,9 @@
       {{ presetValues.longBreakLen }} |
       {{ presetValues.loopsTim }}
     </div>
+
     <div class="buttonsGoHere">
+      <!-- MAKE THESE ICONS -->
       <button @click="checkValues(
         presetValues.workLen,
         presetValues.shortBreakLen,
@@ -14,7 +16,7 @@
         presetValues.loopsTim)">
         Play
       </button>
-      <button @click="deletePreset(index)">Delete</button>
+      <button @click="deletePreset(index)">Del</button>
     </div>
   </div>
 </template>
@@ -26,7 +28,6 @@ export default {
   ],
   data () {
     return {
-
     }
   },
   methods: {

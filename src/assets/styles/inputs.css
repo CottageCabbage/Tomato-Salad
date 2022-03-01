@@ -52,40 +52,53 @@ input::-webkit-inner-spin-button {
   border-bottom: 2px solid #eee;
 }
 
-/* .timer-value-input {
-  width: 100%;
-  margin: auto;
-  margin-top: 5px;
-  background-color: #555;
-  color: #eee;
-  border: none;
-  border-radius: 5px;
-  font-size: 20px;
-  text-align: center;
-  padding: 7px;
-}
 
-.timer-value-input:focus {
-  outline: none;
-  border-bottom: 3px solid #999;
-  background: #444;
-} */
-
-#buttonThatStartsTimer {
-  border: none;
-  border-radius: 3px;
-  padding: 5px;
-  font-size: 20px;
-  background-color: grey;
-  transition: background-color 0.5s, transform 0.5s;
-}
-#buttonThatStartsTimer:hover, #buttonThatStartsTimer:focus {
-  background-color: pink;
-  transform: scale(1.05);
-  outline: none;
-}
-#buttonThatStartsTimer:active {
-  background-color: #505050;
-  transform: scale(0.95);
-  transition: none;
-}
+/* BUTTONS */
+  #timerButtons {
+    position: fixed;
+    bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+  }
+  /* Button That Starts Timer */
+    #buttonThatStartsTimer {
+      border: none;
+      border-radius: 3px;
+      padding: 5px;
+      font-size: 20px;
+      background-color: #79842a;
+      transition: background-color 0.5s, transform 0.5s;
+      width: 130px;
+    }
+    #buttonThatStartsTimer:hover, #buttonThatStartsTimer:focus {
+      cursor: pointer;
+      background-color: #596717;
+      transform: scale(1.05);
+      outline: none;
+    }
+    #buttonThatStartsTimer:active {
+      background-color: #406030;
+      transform: scale(0.95);
+      transition: none;
+    }
+  /* Button That Creates Preset */
+    #buttonThatCreatesPreset {
+      border: none;
+      border-radius: 3px;
+      font-size: 18px;
+      padding: 5px;
+      transition: background-color 0.5s, transform 0.5s;
+      width: 130px;
+    }
+    #buttonThatCreatesPreset:hover, #buttonThatCreatesPreset:focus {
+      cursor: pointer;
+      /* background-color: #596717 */
+      transform: scale(1.05);
+      outline: none;
+    }
+    #buttonThatCreatesPreset:active {
+      /* background-color: #406030; */
+      transform: scale(0.95);
+      transition: none;
+    }

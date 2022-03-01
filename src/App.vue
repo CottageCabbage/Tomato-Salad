@@ -3,8 +3,10 @@
     :timerValues="timerValues"
     :checkValues="checkValues"
     :defaultTab="defaultTab"
+    :timerRunning="timerRunning"
+    :alterTimerRunning="alterTimerRunning"
   />
-  <Sidebar />
+  <Sidebar :timerRunning="timerRunning"/>
 
 </template>
 
@@ -23,7 +25,8 @@ export default {
     return {
       defaultTab: 'Inputs',
       timerState: '',
-      timerValues: [{ workLength: '', shortBreakLength: '', longBreakLength: '', loops: '' }]
+      timerValues: [{ workLength: '', shortBreakLength: '', longBreakLength: '', loops: '' }],
+      timerRunning: false
     }
   },
 
@@ -37,11 +40,12 @@ export default {
         this.timerValues[0].loops = loopsInput
         // Call method
         router.push({ name: 'Timer' })
-        // document.getElementById('HEY').innerHTML = 'Lol'
-        // this.startTimer(this.timerValues[0].workLength)
       } else {
         alert('Nope')
       }
+    },
+    alterTimerRunning () {
+      this.timerRunning = !this.timerRunning
     }
   }
 }

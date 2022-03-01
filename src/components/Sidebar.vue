@@ -1,6 +1,7 @@
 <template>
   <nav id="leftNavBar">
-    <router-link to="/Inputs" class="changeViewsBtn">
+
+    <router-link to="/Inputs" class="changeViewsBtn" v-show="timerRunning == false">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
         <g transform="matrix(3.4285714285714284,0,0,3.4285714285714284,0,0)"><g>
         <path d="M10.5,3.5a3.5,3.5,0,0,1-7,0V.5h7Z" style="fill: none;stroke-linecap: round;stroke-linejoin: round"></path>
@@ -9,6 +10,18 @@
         <line x1="1.5" y1="13.5" x2="12.5" y2="13.5" style="fill: none;stroke-linecap: round;stroke-linejoin: round"></line>
         </g></g>
       </svg>
+    </router-link>
+
+    <router-link to="/Timer" class="changeViewsBtn" v-show="timerRunning == true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="rotate">
+        <g transform="matrix(3.4285714285714284,0,0,3.4285714285714284,0,0)"><g>
+        <path d="M10.5,3.5a3.5,3.5,0,0,1-7,0V.5h7Z" style="fill: none;stroke-linecap: round;stroke-linejoin: round"></path>
+        <path d="M10.5,10.5a3.5,3.5,0,0,0-7,0v3h7Z" style="fill: none;stroke-linecap: round;stroke-linejoin: round"></path>
+        <line x1="1.5" y1="0.5" x2="12.5" y2="0.5" style="fill: none;stroke-linecap: round;stroke-linejoin: round"></line>
+        <line x1="1.5" y1="13.5" x2="12.5" y2="13.5" style="fill: none;stroke-linecap: round;stroke-linejoin: round"></line>
+        </g></g>
+      </svg>
+      <span>!</span>
     </router-link>
 
     <router-link to="/Stopwatch" class="changeViewsBtn">
@@ -38,8 +51,26 @@
     </router-link>
   </nav>
 </template>
+
 <script>
 export default {
-
+  props: ['timerRunning'],
+  name: 'Sidebar'
 }
 </script>
+
+<style>
+a {
+  position: relative;
+}
+.rotate + span {
+  position: absolute;
+  bottom: -5px;
+  right: -4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  text-align: center;
+  background: #ff3b52;
+}
+</style>

@@ -9,11 +9,19 @@
   text-align: center;
   padding: 7px;
   font-weight: bold;
-  background-color: grey;
+  background-color: #9998;
+  box-shadow: 0px 0px 10px #000;
   border-radius: 5px;
 }
 
+
+.values {
+
+}
 .buttonsGoHere {
   position: absolute;
   right: 0;
+}
+.buttonsGoHere > button {
+
 }

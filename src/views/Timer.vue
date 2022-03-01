@@ -57,11 +57,14 @@ import windchimeAudio from '@/assets/audio/windchime.mp3'
 import crowdCheerAudio from '@/assets/audio/crowd_cheer.mp3'
 
 export default {
-  props: ['timerValues', 'defaultTab'],
+  props: ['timerValues', 'defaultTab', 'timerRunning', 'alterTimerRunning'],
   mounted () {
     this.updateLoopsLabel()
-    this.timerType = 'work'
-    this.timer = this.startTimer(this.timerValues[0].workLength * 60)
+    if (this.timerRunning === false) {
+      this.alterTimerRunning()
+      this.timerType = 'work'
+      this.timer = this.startTimer(this.timerValues[0].workLength * 60)
+    }
   },
   data () {
     return {
@@ -76,8 +79,10 @@ export default {
       let startTime
       let timer
       let ms = seconds * 1000
+      // Outside functions:
       const doThing = this.nextAction
       const goBack = this.goBackToDefault
+      const alterTimerRunning = this.alterTimerRunning
 
       var obj
       obj = {}
@@ -113,6 +118,7 @@ export default {
       obj.cancel = function () {
         clearInterval(timer)
         obj.resume = function () {}
+        alterTimerRunning()
         goBack()
       }
       obj.modify = function () {

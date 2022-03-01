@@ -11,6 +11,14 @@
     />
   </div>
 
+  <div v-if="presetsOBJ.length == 0" id="presetsMissing">
+    <h2>Oh no,</h2>
+    <p>
+      It doesn't look like you have any preset. Would you like to
+      <router-link to="/Inputs">create one</router-link>?
+    </p>
+  </div>
+
 </template>
 <script>
 import '@/assets/styles/presets.css'
