@@ -6,6 +6,8 @@
       :presetValues="preset[0]"
       :index="i"
       :checkValues="checkValues"
+      :getPresets="getPresets"
+      :deletePreset="deletePreset"
     />
   </div>
 
@@ -16,11 +18,7 @@ import PresetItem from '@/components/presetItem.vue'
 
 export default {
   props: ['checkValues'],
-
   mounted () {
-    this.getPresets()
-  },
-  updated () {
     this.getPresets()
   },
   components: { PresetItem },
@@ -32,6 +30,13 @@ export default {
   methods: {
     getPresets () {
       this.presetsOBJ = JSON.parse(localStorage.getItem('presets'))
+    },
+    deletePreset (index) {
+      const presetsOBJ = JSON.parse(localStorage.getItem('presets'))
+      presetsOBJ.splice(index, 1)
+      localStorage.setItem('presets', JSON.stringify(presetsOBJ))
+      console.log(presetsOBJ)
+      this.getPresets()
     }
   }
 }
