@@ -2,40 +2,95 @@
   <div id="stopwatch">
     <h2 id="label">00:00</h2>
     <div id="stopwatchButtons">
-      <button @click="startStopwatch()">Start</button>
-      <button>Reset</button>
+
+      <button
+        @click="assingStopwatchToVar()"
+        v-if="stopwatchRunning === false && !stopwatch">
+        Start
+      </button>
+
+      <button
+        @click="stopwatch.resume()"
+        v-if="stopwatchRunning === false && stopwatch">
+        Resume
+      </button>
+
+      <button
+        @click="stopwatch.pause()"
+        v-if="stopwatchRunning === true && stopwatch">
+        Pause
+      </button>
+
+      <button
+        v-if="stopwatch">
+        Reset
+      </button>
+
+      {{stopwatchRunning}}
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['stopwatchRunning', 'alterStopwatchRunning'],
+  mounted () {
+    if (this.stopwatchRunning) {
+      this.updateStopwatchLabel()
+    }
+  },
+  data () {
+    return {
+      stopwatch: ''
+    }
+  },
   methods: {
+    assingStopwatchToVar () {
+      this.stopwatch = this.startStopwatch()
+    },
     startStopwatch () {
       var obj = {}
-      const startTime = new Date().getTime()
+      let startTime
       let timer
-      // let ms
+      let ms
+      const alterStopwatchRunning = this.alterStopwatchRunning
+      const updateStopwatchLabel = this.updateStopwatchLabel
 
       obj.resume = function () {
+        startTime = new Date().getTime()
         timer = setInterval(obj.step, 250)
+        alterStopwatchRunning()
+      }
+      obj.pause = function () {
+        ms = obj.step()
+        clearInterval(timer)
+        alterStopwatchRunning()
+        console.log(ms)
       }
 
       obj.step = function () {
-        var timePassed = Math.max((new Date().startTime() - startTime))
-        // var now = Math.max(0, ms - (new Date().getTime() - startTime))
-        // var m = Math.floor(now / 60000)
-        // var s = Math.floor(now / 1000) % 60
-        return now
+        var timePassed = Math.max(0, new Date().getTime() - startTime)
+
+        var minutes = Math.floor(timePassed / 60000)
+        var seconds = Math.floor(timePassed / 1000) % 60
+
+        // if (seconds) below '10', add a '0' in front of it.
+        seconds = (seconds < 10 ? '0' : '') + seconds
+        // update timer label
+        updateStopwatchLabel(minutes, seconds)
+        return timePassed
       }
 
       obj.cancel = function () {
+        alterStopwatchRunning()
         clearInterval(timer)
       }
 
-      document.getElementById('label').innerHTML = timer
       obj.resume()
       return obj
+    },
+    updateStopwatchLabel (minutes, seconds) {
+      document.getElementById('label').innerHTML = minutes + ':' + seconds
     }
   }
 }

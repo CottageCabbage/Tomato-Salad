@@ -3,8 +3,8 @@
     :timerValues="timerValues"
     :checkValues="checkValues"
     :defaultTab="defaultTab"
-    :timerRunning="timerRunning"
-    :alterTimerRunning="alterTimerRunning"
+    :timerRunning="timerRunning" :alterTimerRunning="alterTimerRunning"
+    :stopwatchRunning="stopwatchRunning" :alterStopwatchRunning="alterStopwatchRunning"
   />
   <Sidebar :timerRunning="timerRunning"/>
 
@@ -26,7 +26,8 @@ export default {
       defaultTab: 'Inputs',
       timerState: '',
       timerValues: [{ workLength: '', shortBreakLength: '', longBreakLength: '', loops: '' }],
-      timerRunning: false
+      timerRunning: false,
+      stopwatchRunning: false
     }
   },
 
@@ -46,6 +47,9 @@ export default {
     },
     alterTimerRunning () {
       this.timerRunning = !this.timerRunning
+    },
+    alterStopwatchRunning () {
+      this.stopwatchRunning = !this.stopwatchRunning
     }
   }
 }
