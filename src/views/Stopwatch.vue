@@ -49,38 +49,44 @@ export default {
       this.stopwatch = this.startStopwatch()
     },
     startStopwatch () {
-      var obj = {}
       let startTime
       let timer
       let ms
+      let timeRan = 0
+      // Outside methods & var
       const alterStopwatchRunning = this.alterStopwatchRunning
       const updateStopwatchLabel = this.updateStopwatchLabel
-
+      // Declare obj
+      var obj = {}
+      // Resume: get current time, set timer interval and change bool 'stopwatchRunning?' to true
       obj.resume = function () {
         startTime = new Date().getTime()
         timer = setInterval(obj.step, 250)
         alterStopwatchRunning()
       }
+      // Step: compares time where 'startTime' was got with current time,
+      // Divide and get remained for minute and seconds
+      // Format seconds, then update label.
+      obj.step = function () {
+        var timePassed = Math.max(0, new Date().getTime() - startTime)
+        timeRan += timePassed
+        var minutes = Math.floor(timeRan / 60000)
+        var seconds = Math.floor(timeRan / 1000) % 60
+
+        // if (seconds) below '10', add a '0' in front of it.
+        seconds = (seconds < 10 ? '0' : '') + seconds
+        // update timer label
+        updateStopwatchLabel(minutes, seconds)
+        // ms += timePassed
+        return timeRan
+      }
+      // Pause: assing Step to ms, clear
       obj.pause = function () {
         ms = obj.step()
         clearInterval(timer)
         alterStopwatchRunning()
         console.log(ms)
       }
-
-      obj.step = function () {
-        var timePassed = Math.max(0, new Date().getTime() - startTime)
-
-        var minutes = Math.floor(timePassed / 60000)
-        var seconds = Math.floor(timePassed / 1000) % 60
-
-        // if (seconds) below '10', add a '0' in front of it.
-        seconds = (seconds < 10 ? '0' : '') + seconds
-        // update timer label
-        updateStopwatchLabel(minutes, seconds)
-        return timePassed
-      }
-
       obj.cancel = function () {
         alterStopwatchRunning()
         clearInterval(timer)

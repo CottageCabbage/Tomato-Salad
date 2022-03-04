@@ -83,7 +83,7 @@ export default {
       const doThing = this.nextAction
       const goBack = this.goBackToDefault
       const alterTimerRunning = this.alterTimerRunning
-
+      // Declare object
       var obj
       obj = {}
 
