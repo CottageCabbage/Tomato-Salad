@@ -4,30 +4,32 @@
     <div id="stopwatchButtons">
 
       <button
+        id="startStopwatchBtn"
         @click="assingStopwatchToVar()"
         v-if="stopwatchRunning === false && !stopwatch">
         Start
       </button>
 
       <button
+        id="resumeStopwatchBtn"
         @click="stopwatch.resume()"
         v-if="stopwatchRunning === false && stopwatch">
         Resume
       </button>
 
       <button
+        id="pauseStopwatchBtn"
         @click="stopwatch.pause()"
         v-if="stopwatchRunning === true && stopwatch">
         Pause
       </button>
 
       <button
+        id="resetStopwatchBtn"
         @click="stopwatch.cancel()"
         v-if="stopwatch">
         Reset
       </button>
-
-      {{stopwatchRunning}}
     </div>
   </div>
 </template>
@@ -42,7 +44,8 @@ export default {
   },
   data () {
     return {
-      stopwatch: ''
+      stopwatch: '',
+      stopwatchState: ''
     }
   },
   methods: {
@@ -59,12 +62,12 @@ export default {
       let sum = 0
       let total = 0
       let minutes
-      let running
       let seconds
       // let minutes
       // Outside methods & var
       const alterStopwatchRunning = this.alterStopwatchRunning
       const updateStopwatchLabel = this.updateStopwatchLabel
+      const resetStopwatch = this.resetStopwatch
       // Declare obj
       var obj = {}
 
@@ -76,16 +79,9 @@ export default {
       }
 
       obj.step = function () {
-        running = true
-        console.log(running)
-
         diff = Math.max(0, new Date().getTime() - startTime)
 
         sum = diff + total
-
-        // console.log('Sum:', sum)
-        // console.log('Diff:', diff)
-        // console.log('Total:', total)
 
         seconds = Math.floor(sum / 1000) % 60
         minutes = Math.floor(sum / 60000)
@@ -95,17 +91,18 @@ export default {
         updateStopwatchLabel(minutes, seconds)
       }
 
-      // Pause: assing Step to ms, clear
       obj.pause = function () {
         // ms = obj.step()
         total = diff + total
         clearInterval(timer)
         alterStopwatchRunning()
         // console.log(ms)
-        running = false
       }
+
       obj.cancel = function () {
         alterStopwatchRunning()
+        resetStopwatch()
+        updateStopwatchLabel('0', '00')
         clearInterval(timer)
       }
 
@@ -115,6 +112,9 @@ export default {
 
     updateStopwatchLabel (minutes, seconds) {
       document.getElementById('label').innerHTML = minutes + ':' + seconds
+    },
+    resetStopwatch () {
+      this.stopwatch = ''
     }
   }
 }
@@ -142,7 +142,40 @@ export default {
   position: fixed;
   left: 50%;
   top: 60%;
+  width: 33%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+}
+
+#stopwatchButtons > button {
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 18px;
+  margin-left: 5px;
+  margin-right: 5px;
+  transition: transform 0.3s;
+}
+#stopwatchButtons > button:hover {
+  transform: scale(1.1);
+}
+
+#startStopwatchBtn {
+  background-color: #79842a;
+  font-size: 20px;
+  width: 100%;
+}
+
+#resumeStopwatchBtn {
+  width: 100%;
+}
+#pauseStopwatchBtn {
+  width: 100%;
+}
+#resetStopwatchBtn {
+  width: 100%;
+  background-color: rgb(255, 74, 74);
 }
 
 </style>
