@@ -22,6 +22,7 @@
       </button>
 
       <button
+        @click="stopwatch.cancel()"
         v-if="stopwatch">
         Reset
       </button>
@@ -48,44 +49,60 @@ export default {
     assingStopwatchToVar () {
       this.stopwatch = this.startStopwatch()
     },
+
     startStopwatch () {
       let startTime
       let timer
-      let ms
-      let timeRan = 0
+      // let ms
+      // timer values
+      let diff
+      let sum = 0
+      let total = 0
+      let minutes
+      let running
+      let seconds
+      // let minutes
       // Outside methods & var
       const alterStopwatchRunning = this.alterStopwatchRunning
       const updateStopwatchLabel = this.updateStopwatchLabel
       // Declare obj
       var obj = {}
+
       // Resume: get current time, set timer interval and change bool 'stopwatchRunning?' to true
       obj.resume = function () {
         startTime = new Date().getTime()
         timer = setInterval(obj.step, 250)
         alterStopwatchRunning()
       }
-      // Step: compares time where 'startTime' was got with current time,
-      // Divide and get remained for minute and seconds
-      // Format seconds, then update label.
-      obj.step = function () {
-        var timePassed = Math.max(0, new Date().getTime() - startTime)
-        timeRan += timePassed
-        var minutes = Math.floor(timeRan / 60000)
-        var seconds = Math.floor(timeRan / 1000) % 60
 
+      obj.step = function () {
+        running = true
+        console.log(running)
+
+        diff = Math.max(0, new Date().getTime() - startTime)
+
+        sum = diff + total
+
+        // console.log('Sum:', sum)
+        // console.log('Diff:', diff)
+        // console.log('Total:', total)
+
+        seconds = Math.floor(sum / 1000) % 60
+        minutes = Math.floor(sum / 60000)
         // if (seconds) below '10', add a '0' in front of it.
         seconds = (seconds < 10 ? '0' : '') + seconds
         // update timer label
         updateStopwatchLabel(minutes, seconds)
-        // ms += timePassed
-        return timeRan
       }
+
       // Pause: assing Step to ms, clear
       obj.pause = function () {
-        ms = obj.step()
+        // ms = obj.step()
+        total = diff
         clearInterval(timer)
         alterStopwatchRunning()
-        console.log(ms)
+        // console.log(ms)
+        running = false
       }
       obj.cancel = function () {
         alterStopwatchRunning()
@@ -95,6 +112,7 @@ export default {
       obj.resume()
       return obj
     },
+
     updateStopwatchLabel (minutes, seconds) {
       document.getElementById('label').innerHTML = minutes + ':' + seconds
     }
