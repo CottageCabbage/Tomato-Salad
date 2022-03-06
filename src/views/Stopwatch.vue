@@ -98,7 +98,7 @@ export default {
       // Pause: assing Step to ms, clear
       obj.pause = function () {
         // ms = obj.step()
-        total = diff
+        total = diff + total
         clearInterval(timer)
         alterStopwatchRunning()
         // console.log(ms)
