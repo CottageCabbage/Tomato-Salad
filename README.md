@@ -1,24 +1,29 @@
-# tomato-salad
+# Tomato Salad
+A Vue+Electron Pomodoro Timer. Easy and fast to use.
 
+## Screenshots:
+
+![](./README_assets/main.png)
+
+![](./README_assets/timer_running.png)
+
+![](./README_assets/stopwatch_running.png)
+
+---
 ## Project setup
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
 > https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/#to-start-a-development-server
 
+### Compiles and hot-reloads for development
 ```
 npm run electron:serve
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+npm run electron:build
 ```
 
 ### Lints and fixes files
