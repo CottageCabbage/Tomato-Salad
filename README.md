@@ -3,13 +3,7 @@ A Vue+Electron Pomodoro Timer. Easy and fast to use.
 
 ## Screenshots:
 
-![](./README_assets/main.png)
-
-![](./README_assets/timer_running.png)
-
-![](./README_assets/stopwatch_running.png)
-
-![](./README_assets//presets.png)
+![400](./README_assets/main.png) ![400](./README_assets/timer_running.png) ![400](./README_assets/stopwatch_running.png) ![400](./README_assets//presets.png)
 
 ---
 ## Project setup
