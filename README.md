@@ -9,6 +9,8 @@ A Vue+Electron Pomodoro Timer. Easy and fast to use.
 
 ![](./README_assets/stopwatch_running.png)
 
+![](./README_assets//presets.png)
+
 ---
 ## Project setup
 ```
