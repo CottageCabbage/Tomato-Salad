@@ -18,12 +18,18 @@ import Sidebar from '@/components/Sidebar.vue'
 export default {
   components: { Sidebar },
   mounted () {
+    if (localStorage.getItem('defaultTabVal') === null) {
+      localStorage.setItem('defaultTabVal', 'Inputs')
+    }
+
+    const x = localStorage.getItem('defaultTabVal')
+    this.defaultTab = x
     router.push({ name: this.defaultTab })
   },
 
   data () {
     return {
-      defaultTab: 'Inputs',
+      defaultTab: '',
       timerState: '',
       timerValues: [{ workLength: '', shortBreakLength: '', longBreakLength: '', loops: '' }],
       timerRunning: false,
