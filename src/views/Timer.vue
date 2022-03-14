@@ -122,7 +122,27 @@ export default {
         goBack()
       }
       obj.modify = function () {
-        ms += 5 * 1000 * 60
+        if (localStorage.getItem('addToTimerVal') !== null) {
+          const addToTimerValue = localStorage.getItem('addToTimerVal')
+
+          switch (addToTimerValue) {
+            case 1:
+              ms += 1 * 1000 * 60
+              break
+            case 3:
+              ms += 3 * 1000 * 60
+              break
+            case 5:
+              ms += 5 * 1000 * 60
+              break
+            case 'custom':
+              ms += localStorage.getItem('customValue') * 1000 * 60
+              break
+          }
+        } else {
+          // Add 3 minutes to timer
+          ms += 3 * 1000 * 60
+        }
       }
 
       obj.resume()

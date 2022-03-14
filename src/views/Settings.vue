@@ -1,6 +1,7 @@
 <template>
   <div id="settingsTab">
     <h1>Settings</h1>
+
     <label>
       Default Tab:
       <select name="defaultTab" id="" v-model="data_defaultTab">
@@ -10,7 +11,30 @@
       </select>
     </label>
 
-    <p>File Select for Work-ShortBreak-LongBreak end noise</p>
+    <label>
+      Prompt me before starting next timer?
+      <input type="checkbox"/>
+    </label>
+
+    <label>
+      How much time to add to timer with + button?
+      <select name="plusButton" id="" v-model="data_addToTimer">
+        <option value="1">+1 minute</option>
+        <option value="3" selected>+3 minutes</option>
+        <option value="5">+5 minutes</option>
+        <option value="custom">Custom value</option>
+      </select>
+    </label>
+
+    <label>
+      Custom value for 'Add to Timer' Button.
+      <input
+        type="number"
+        :disabled="data_addToTimer !== 'custom'"
+        v-model="data_customValue"
+      />
+    </label>
+
   </div>
 </template>
 <script>
@@ -19,29 +43,25 @@ import '@/assets/styles/settings.css'
 export default {
   data () {
     return {
-      data_defaultTab: 'Inputs'
+      data_defaultTab: localStorage.getItem('defaultTabVal'),
+      data_addToTimer: localStorage.getItem('addToTimerVal'),
+      data_customValue: localStorage.getItem('customValue')
+    }
+  },
+  mounted () {
+    if (this.data_addToTimer == null) {
+      this.data_addToTimer = 3
     }
   },
   watch: {
     data_defaultTab: function () {
       localStorage.setItem('defaultTabVal', this.data_defaultTab)
-    }
-  },
-  methods: {
-    defaultTabSetting () {
-
-      // const newPreset = [{ workLen: a, shortBreakLen: b, longBreakLen: c, loopsTim: d }]
-      // // If key 'presets' does not exist...
-      // if (localStorage.getItem('presets') === null) {
-      //   // create a new array, push newPreset and set it in localStorage
-      //   const x = []
-      //   x.push(newPreset)
-      //   localStorage.setItem('presets', JSON.stringify(x))
-      // } else {
-      //   const presetsJSON = JSON.parse(localStorage.getItem('presets'))
-      //   presetsJSON.push(newPreset)
-      //   localStorage.setItem('presets', JSON.stringify(presetsJSON))
-      // }
+    },
+    data_addToTimer: function () {
+      localStorage.setItem('addToTimerVal', this.data_addToTimer)
+    },
+    data_customValue: function () {
+      localStorage.setItem('customValue', this.data_customValue)
     }
   }
 }

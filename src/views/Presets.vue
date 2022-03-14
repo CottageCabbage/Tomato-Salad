@@ -11,7 +11,7 @@
     />
   </div>
 
-  <div v-if="presetsOBJ === null" id="presetsMissing">
+  <div v-if="presetsOBJ === null || presetsOBJ.length === 0" id="presetsMissing">
     <h2>Oh no,</h2>
     <p>
       It doesn't look like you have any preset. Would you like to
@@ -38,9 +38,6 @@ export default {
   methods: {
     getPresets () {
       this.presetsOBJ = JSON.parse(localStorage.getItem('presets'))
-      if (this.presetsOBJ === null) {
-        console.log('null')
-      }
     },
     deletePreset (index) {
       const presetsOBJ = JSON.parse(localStorage.getItem('presets'))
