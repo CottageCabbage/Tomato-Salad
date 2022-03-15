@@ -157,29 +157,32 @@ export default {
           // update loops
           this.loops += 1
           this.updateLoopsLabel()
-          // and check if loops lower than the value typed in
+          // and check if loops lower than the value typed in (means there )
           if (this.loops < this.timerValues[0].loops) {
             // If so, play audio and
             audio = new Audio(windchimeAudio)
             audio.play()
             // prompt to start Short Break timer
-            if (confirm('Start Short Break?')) {
-              this.timerType = 'shortBreak'
-              this.timer = this.startTimer(this.timerValues[0].shortBreakLength * 60)
+            if (localStorage.getItem('promptEndVal') === 'true') {
+              confirm('Start Short Break?')
             }
+            this.timerType = 'shortBreak'
+            this.timer = this.startTimer(this.timerValues[0].shortBreakLength * 60)
           } else { // Otherwise, prompt to start Long Break.
-            if (confirm('Start Long Break?')) {
-              this.timerType = 'longBreak'
-              this.timer = this.startTimer(this.timerValues[0].longBreakLength * 60)
+            if (localStorage.getItem('promptEndVal') === 'true') {
+              confirm('Start Long Break?')
             }
+            this.timerType = 'longBreak'
+            this.timer = this.startTimer(this.timerValues[0].longBreakLength * 60)
           }
           break
         // If just finished 'short break' timer, prompt to start work
         case 'shortBreak':
-          if (confirm('Start Working?')) {
-            this.timerType = 'work'
-            this.timer = this.startTimer(this.timerValues[0].workLength * 60)
+          if (localStorage.getItem('promptEndVal') === 'true') {
+            confirm('Start Working again?')
           }
+          this.timerType = 'work'
+          this.timer = this.startTimer(this.timerValues[0].workLength * 60)
           break
         // If just finished 'long break', alert, play audio and push to default tab
         case 'longBreak':

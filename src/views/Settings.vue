@@ -13,7 +13,7 @@
 
     <label>
       Prompt me before starting next timer?
-      <input type="checkbox"/>
+      <input type="checkbox" v-model="data_promptEnd"/>
     </label>
 
     <label>
@@ -44,6 +44,7 @@ export default {
   data () {
     return {
       data_defaultTab: localStorage.getItem('defaultTabVal'),
+      data_promptEnd: localStorage.getItem('promptEndVal'),
       data_addToTimer: localStorage.getItem('addToTimerVal'),
       data_customValue: localStorage.getItem('customValue')
     }
@@ -56,6 +57,17 @@ export default {
   watch: {
     data_defaultTab: function () {
       localStorage.setItem('defaultTabVal', this.data_defaultTab)
+    },
+    data_promptEnd: function () {
+      switch (localStorage.getItem('promptEndVal')) {
+        case 'true':
+          localStorage.setItem('promptEndVal', false)
+          break
+        case 'false':
+        default:
+          localStorage.setItem('promptEndVal', true)
+          break
+      }
     },
     data_addToTimer: function () {
       localStorage.setItem('addToTimerVal', this.data_addToTimer)
